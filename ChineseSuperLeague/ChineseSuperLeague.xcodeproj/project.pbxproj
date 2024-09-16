@@ -1,0 +1,385 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22792C802C9853890082BAC7 /* ChineseSuperLeagueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22792C7F2C9853890082BAC7 /* ChineseSuperLeagueApp.swift */; };
+		22792C842C98538B0082BAC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22792C832C98538B0082BAC7 /* Assets.xcassets */; };
+		22792C872C98538B0082BAC7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22792C862C98538B0082BAC7 /* Preview Assets.xcassets */; };
+		22792C8E2C98548D0082BAC7 /* Standings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22792C8D2C98548D0082BAC7 /* Standings.swift */; };
+		22792C902C9859E20082BAC7 /* CustomFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22792C8F2C9859E20082BAC7 /* CustomFontExtension.swift */; };
+		22792C972C985A430082BAC7 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C922C985A430082BAC7 /* Poppins-SemiBold.ttf */; };
+		22792C982C985A430082BAC7 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C932C985A430082BAC7 /* Poppins-Bold.ttf */; };
+		22792C992C985A430082BAC7 /* NTF-Grand-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C942C985A430082BAC7 /* NTF-Grand-MediumItalic.otf */; };
+		22792C9A2C985A430082BAC7 /* NTF-Grand-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C952C985A430082BAC7 /* NTF-Grand-Italic.otf */; };
+		22792C9B2C985A430082BAC7 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C962C985A430082BAC7 /* Poppins-Regular.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		22792C7C2C9853890082BAC7 /* CSL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22792C7F2C9853890082BAC7 /* ChineseSuperLeagueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseSuperLeagueApp.swift; sourceTree = "<group>"; };
+		22792C832C98538B0082BAC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22792C862C98538B0082BAC7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		22792C8D2C98548D0082BAC7 /* Standings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Standings.swift; sourceTree = "<group>"; };
+		22792C8F2C9859E20082BAC7 /* CustomFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontExtension.swift; sourceTree = "<group>"; };
+		22792C922C985A430082BAC7 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		22792C932C985A430082BAC7 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		22792C942C985A430082BAC7 /* NTF-Grand-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NTF-Grand-MediumItalic.otf"; sourceTree = "<group>"; };
+		22792C952C985A430082BAC7 /* NTF-Grand-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NTF-Grand-Italic.otf"; sourceTree = "<group>"; };
+		22792C962C985A430082BAC7 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		22792C9E2C985B7E0082BAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22792C792C9853890082BAC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22792C732C9853890082BAC7 = {
+			isa = PBXGroup;
+			children = (
+				22792C7E2C9853890082BAC7 /* ChineseSuperLeague */,
+				22792C7D2C9853890082BAC7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22792C7D2C9853890082BAC7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22792C7C2C9853890082BAC7 /* CSL.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22792C7E2C9853890082BAC7 /* ChineseSuperLeague */ = {
+			isa = PBXGroup;
+			children = (
+				22792C9E2C985B7E0082BAC7 /* Info.plist */,
+				22792C7F2C9853890082BAC7 /* ChineseSuperLeagueApp.swift */,
+				22792C832C98538B0082BAC7 /* Assets.xcassets */,
+				22792C852C98538B0082BAC7 /* Preview Content */,
+				22792C8D2C98548D0082BAC7 /* Standings.swift */,
+				22792C8F2C9859E20082BAC7 /* CustomFontExtension.swift */,
+				22792C912C985A1A0082BAC7 /* Fonts */,
+			);
+			path = ChineseSuperLeague;
+			sourceTree = "<group>";
+		};
+		22792C852C98538B0082BAC7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				22792C862C98538B0082BAC7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		22792C912C985A1A0082BAC7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				22792C952C985A430082BAC7 /* NTF-Grand-Italic.otf */,
+				22792C942C985A430082BAC7 /* NTF-Grand-MediumItalic.otf */,
+				22792C962C985A430082BAC7 /* Poppins-Regular.ttf */,
+				22792C922C985A430082BAC7 /* Poppins-SemiBold.ttf */,
+				22792C932C985A430082BAC7 /* Poppins-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22792C7B2C9853890082BAC7 /* ChineseSuperLeague */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22792C8A2C98538B0082BAC7 /* Build configuration list for PBXNativeTarget "ChineseSuperLeague" */;
+			buildPhases = (
+				22792C782C9853890082BAC7 /* Sources */,
+				22792C792C9853890082BAC7 /* Frameworks */,
+				22792C7A2C9853890082BAC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChineseSuperLeague;
+			productName = ChineseSuperLeague;
+			productReference = 22792C7C2C9853890082BAC7 /* CSL.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22792C742C9853890082BAC7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					22792C7B2C9853890082BAC7 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = 22792C772C9853890082BAC7 /* Build configuration list for PBXProject "ChineseSuperLeague" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22792C732C9853890082BAC7;
+			productRefGroup = 22792C7D2C9853890082BAC7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22792C7B2C9853890082BAC7 /* ChineseSuperLeague */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22792C7A2C9853890082BAC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22792C972C985A430082BAC7 /* Poppins-SemiBold.ttf in Resources */,
+				22792C872C98538B0082BAC7 /* Preview Assets.xcassets in Resources */,
+				22792C9B2C985A430082BAC7 /* Poppins-Regular.ttf in Resources */,
+				22792C842C98538B0082BAC7 /* Assets.xcassets in Resources */,
+				22792C9A2C985A430082BAC7 /* NTF-Grand-Italic.otf in Resources */,
+				22792C992C985A430082BAC7 /* NTF-Grand-MediumItalic.otf in Resources */,
+				22792C982C985A430082BAC7 /* Poppins-Bold.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22792C782C9853890082BAC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22792C802C9853890082BAC7 /* ChineseSuperLeagueApp.swift in Sources */,
+				22792C902C9859E20082BAC7 /* CustomFontExtension.swift in Sources */,
+				22792C8E2C98548D0082BAC7 /* Standings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		22792C882C98538B0082BAC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		22792C892C98538B0082BAC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22792C8B2C98538B0082BAC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ChineseSuperLeague/Preview Content\"";
+				DEVELOPMENT_TEAM = 8R94Q57257;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChineseSuperLeague/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yiming.ChineseSuperLeague;
+				PRODUCT_NAME = CSL;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22792C8C2C98538B0082BAC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ChineseSuperLeague/Preview Content\"";
+				DEVELOPMENT_TEAM = 8R94Q57257;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChineseSuperLeague/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yiming.ChineseSuperLeague;
+				PRODUCT_NAME = CSL;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22792C772C9853890082BAC7 /* Build configuration list for PBXProject "ChineseSuperLeague" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22792C882C98538B0082BAC7 /* Debug */,
+				22792C892C98538B0082BAC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22792C8A2C98538B0082BAC7 /* Build configuration list for PBXNativeTarget "ChineseSuperLeague" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22792C8B2C98538B0082BAC7 /* Debug */,
+				22792C8C2C98538B0082BAC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 22792C742C9853890082BAC7 /* Project object */;
+}
