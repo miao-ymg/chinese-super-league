@@ -3,21 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		22792C802C9853890082BAC7 /* ChineseSuperLeagueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22792C7F2C9853890082BAC7 /* ChineseSuperLeagueApp.swift */; };
 		22792C842C98538B0082BAC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22792C832C98538B0082BAC7 /* Assets.xcassets */; };
 		22792C872C98538B0082BAC7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22792C862C98538B0082BAC7 /* Preview Assets.xcassets */; };
-		22792C8E2C98548D0082BAC7 /* Standings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22792C8D2C98548D0082BAC7 /* Standings.swift */; };
-		22792C902C9859E20082BAC7 /* CustomFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22792C8F2C9859E20082BAC7 /* CustomFontExtension.swift */; };
 		22792C972C985A430082BAC7 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C922C985A430082BAC7 /* Poppins-SemiBold.ttf */; };
 		22792C982C985A430082BAC7 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C932C985A430082BAC7 /* Poppins-Bold.ttf */; };
 		22792C992C985A430082BAC7 /* NTF-Grand-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C942C985A430082BAC7 /* NTF-Grand-MediumItalic.otf */; };
 		22792C9A2C985A430082BAC7 /* NTF-Grand-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C952C985A430082BAC7 /* NTF-Grand-Italic.otf */; };
 		22792C9B2C985A430082BAC7 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C962C985A430082BAC7 /* Poppins-Regular.ttf */; };
-		22903B442C99B2F9000DC352 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 22903B432C99B2F9000DC352 /* test.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,16 +22,20 @@
 		22792C7F2C9853890082BAC7 /* ChineseSuperLeagueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseSuperLeagueApp.swift; sourceTree = "<group>"; };
 		22792C832C98538B0082BAC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22792C862C98538B0082BAC7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		22792C8D2C98548D0082BAC7 /* Standings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Standings.swift; sourceTree = "<group>"; };
-		22792C8F2C9859E20082BAC7 /* CustomFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontExtension.swift; sourceTree = "<group>"; };
 		22792C922C985A430082BAC7 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		22792C932C985A430082BAC7 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		22792C942C985A430082BAC7 /* NTF-Grand-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NTF-Grand-MediumItalic.otf"; sourceTree = "<group>"; };
 		22792C952C985A430082BAC7 /* NTF-Grand-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NTF-Grand-Italic.otf"; sourceTree = "<group>"; };
 		22792C962C985A430082BAC7 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
-		22792C9E2C985B7E0082BAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		22903B432C99B2F9000DC352 /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
+		22792C9E2C985B7E0082BAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		224F95832D21A40A0079AAF2 /* Model */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Model; sourceTree = "<group>"; };
+		224F95852D21A4110079AAF2 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
+		224F95862D21A4130079AAF2 /* View Model */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "View Model"; sourceTree = "<group>"; };
+		224F958F2D21AAD90079AAF2 /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		22792C792C9853890082BAC7 /* Frameworks */ = {
@@ -66,14 +67,15 @@
 		22792C7E2C9853890082BAC7 /* ChineseSuperLeague */ = {
 			isa = PBXGroup;
 			children = (
+				224F95832D21A40A0079AAF2 /* Model */,
+				224F95852D21A4110079AAF2 /* View */,
+				224F95862D21A4130079AAF2 /* View Model */,
 				22792C9E2C985B7E0082BAC7 /* Info.plist */,
 				22792C7F2C9853890082BAC7 /* ChineseSuperLeagueApp.swift */,
 				22792C832C98538B0082BAC7 /* Assets.xcassets */,
-				22792C852C98538B0082BAC7 /* Preview Content */,
-				22792C8D2C98548D0082BAC7 /* Standings.swift */,
-				22792C8F2C9859E20082BAC7 /* CustomFontExtension.swift */,
+				224F958F2D21AAD90079AAF2 /* Extensions */,
 				22792C912C985A1A0082BAC7 /* Fonts */,
-				22903B432C99B2F9000DC352 /* test.json */,
+				22792C852C98538B0082BAC7 /* Preview Content */,
 			);
 			path = ChineseSuperLeague;
 			sourceTree = "<group>";
@@ -108,10 +110,17 @@
 				22792C782C9853890082BAC7 /* Sources */,
 				22792C792C9853890082BAC7 /* Frameworks */,
 				22792C7A2C9853890082BAC7 /* Resources */,
+				22B5C3662CE12D1C005CE1ED /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				224F95832D21A40A0079AAF2 /* Model */,
+				224F95852D21A4110079AAF2 /* View */,
+				224F95862D21A4130079AAF2 /* View Model */,
+				224F958F2D21AAD90079AAF2 /* Extensions */,
 			);
 			name = ChineseSuperLeague;
 			productName = ChineseSuperLeague;
@@ -157,7 +166,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				22792C972C985A430082BAC7 /* Poppins-SemiBold.ttf in Resources */,
-				22903B442C99B2F9000DC352 /* test.json in Resources */,
 				22792C872C98538B0082BAC7 /* Preview Assets.xcassets in Resources */,
 				22792C9B2C985A430082BAC7 /* Poppins-Regular.ttf in Resources */,
 				22792C842C98538B0082BAC7 /* Assets.xcassets in Resources */,
@@ -169,14 +177,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		22B5C3662CE12D1C005CE1ED /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		22792C782C9853890082BAC7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				22792C802C9853890082BAC7 /* ChineseSuperLeagueApp.swift in Sources */,
-				22792C902C9859E20082BAC7 /* CustomFontExtension.swift in Sources */,
-				22792C8E2C98548D0082BAC7 /* Standings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +246,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -283,7 +309,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -312,6 +338,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ChineseSuperLeague/Preview Content\"";
 				DEVELOPMENT_TEAM = 8R94Q57257;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChineseSuperLeague/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -342,6 +369,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ChineseSuperLeague/Preview Content\"";
 				DEVELOPMENT_TEAM = 8R94Q57257;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChineseSuperLeague/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

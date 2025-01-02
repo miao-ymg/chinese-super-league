@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct ChinaSuperLeagueApp: App {
+struct ChineseSuperLeagueApp: App {
     var body: some Scene {
         WindowGroup {
-            Standings()
+            StandingsView()
         }
     }
 }

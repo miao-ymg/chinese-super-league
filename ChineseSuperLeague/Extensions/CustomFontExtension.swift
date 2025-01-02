@@ -19,7 +19,7 @@ extension Font {
             return .custom("Poppins-Regular", size: size)
         }
     }
-    
+
     // NTF-Grand Italic Font
     static func ntfGrandItalicFont(_ size: CGFloat, weight: Font.Weight) -> Font {
         switch weight {

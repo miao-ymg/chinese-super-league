@@ -1,0 +1,36 @@
+//
+//  TeamStats.swift
+//  ChineseSuperLeague
+//
+//  Created by Sam Miao on 29.12.24.
+//
+
+struct TeamStats: Decodable {
+    let name: String
+    let played: Int
+    let wins: Int
+    let draws: Int
+    let losses: Int
+    let goalDifference: Int
+    let points: Int
+
+    // All JSON properties to decode
+    enum CodingKeys: CodingKey {
+        case team, all  // A few parent keys
+        case name, played, win, draw, lose, goalsDiff, points
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let teamContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .team)
+        let allContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .all)
+
+        self.name = try teamContainer.decode(String.self, forKey: .name)
+        self.played = try allContainer.decode(Int.self, forKey: .played)
+        self.wins = try allContainer.decode(Int.self, forKey: .win)
+        self.draws = try allContainer.decode(Int.self, forKey: .draw)
+        self.losses = try allContainer.decode(Int.self, forKey: .lose)
+        self.goalDifference = try container.decode(Int.self, forKey: .goalsDiff)
+        self.points = try container.decode(Int.self, forKey: .points)
+    }
+}
