@@ -32,3 +32,7 @@ func fetchLeagueStandings() throws -> [TeamStats] {
         throw NetworkError.invalidData
     }
 }
+
+func getNameFromClubAPIID(idApi: Int, clubs: [Club]) -> String? {
+    return clubs.first { $0.idApi == idApi }?.nameShort
+}

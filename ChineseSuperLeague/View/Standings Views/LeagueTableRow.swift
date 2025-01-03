@@ -9,7 +9,8 @@ import SwiftUI
 
 struct LeagueTableRow: View {
     let leaguePosition: Int
-    let team: TeamStats
+    let club: TeamStats
+    let clubName: String
 
     var body: some View {
         ZStack {
@@ -32,24 +33,24 @@ struct LeagueTableRow: View {
                         .foregroundColor(.secondary)
                         .frame(height: 0.7 * tableRowHeight)
                         .aspectRatio(1, contentMode: .fit)
-                    Text("\(team.name)")
+                    Text("\(clubName)")
                         .font(.poppinsFont(fontSize-1, weight: .regular))
                 }
                 .frame(width: 0.4 * screenWidth, alignment: .leading)
                 .horizPosItem(index: 1, totalWidth: screenWidth)
 
                 // Statistics
-                Text("\(team.played)")
+                Text("\(club.played)")
                     .horizPosItem(index: 2, totalWidth: screenWidth)
-                Text("\(team.wins)")
+                Text("\(club.wins)")
                     .horizPosItem(index: 3, totalWidth: screenWidth)
-                Text("\(team.draws)")
+                Text("\(club.draws)")
                     .horizPosItem(index: 4, totalWidth: screenWidth)
-                Text("\(team.losses)")
+                Text("\(club.losses)")
                     .horizPosItem(index: 5, totalWidth: screenWidth)
-                Text("\(team.goalDifference > 0 ? "+" : "")\(team.goalDifference)")
+                Text("\(club.goalDifference > 0 ? "+" : "")\(club.goalDifference)")
                     .horizPosItem(index: 6, totalWidth: screenWidth)
-                Text("\(team.points)")
+                Text("\(club.points)")
                     .foregroundColor(Color.accentColor)
                     .fontWeight(.semibold)
                     .horizPosItem(index: 7, totalWidth: screenWidth)

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 // ----- CONSTANTS -----
 
@@ -35,6 +36,8 @@ struct TriviaItem: View {
 
 
 struct StandingsView: View {
+    @Query private var clubs: [Club]
+
     @State private var viewModel = StandingsViewModel()
 
     var body: some View {
@@ -52,7 +55,10 @@ struct StandingsView: View {
                 // League standings
                 VStack(spacing: 0) {
                     ForEach((viewModel.teamList ?? []).indices, id: \.self) { rank in
-                        LeagueTableRow(leaguePosition: rank+1, team: viewModel.teamList![rank])
+                        let club = viewModel.teamList![rank]
+                        if let clubName = getNameFromClubAPIID(idApi: club.idApi, clubs: clubs) {
+                            LeagueTableRow(leaguePosition: rank+1, club: club, clubName: clubName)
+                        }
                     }
                 }
                 VStack {

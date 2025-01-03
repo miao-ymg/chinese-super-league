@@ -31,6 +31,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		221871D82D28881800D25F88 /* Database */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Database; sourceTree = "<group>"; };
 		224F95832D21A40A0079AAF2 /* Model */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Model; sourceTree = "<group>"; };
 		224F95852D21A4110079AAF2 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
 		224F95862D21A4130079AAF2 /* View Model */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "View Model"; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		22792C7E2C9853890082BAC7 /* ChineseSuperLeague */ = {
 			isa = PBXGroup;
 			children = (
+				221871D82D28881800D25F88 /* Database */,
 				224F95832D21A40A0079AAF2 /* Model */,
 				224F95852D21A4110079AAF2 /* View */,
 				224F95862D21A4130079AAF2 /* View Model */,
@@ -117,6 +119,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				221871D82D28881800D25F88 /* Database */,
 				224F95832D21A40A0079AAF2 /* Model */,
 				224F95852D21A4110079AAF2 /* View */,
 				224F95862D21A4130079AAF2 /* View Model */,

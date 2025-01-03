@@ -6,7 +6,7 @@
 //
 
 struct TeamStats: Decodable {
-    let name: String
+    let idApi: Int
     let played: Int
     let wins: Int
     let draws: Int
@@ -17,7 +17,7 @@ struct TeamStats: Decodable {
     // All JSON properties to decode
     enum CodingKeys: CodingKey {
         case team, all  // A few parent keys
-        case name, played, win, draw, lose, goalsDiff, points
+        case id, played, win, draw, lose, goalsDiff, points
     }
 
     init(from decoder: Decoder) throws {
@@ -25,7 +25,7 @@ struct TeamStats: Decodable {
         let teamContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .team)
         let allContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .all)
 
-        self.name = try teamContainer.decode(String.self, forKey: .name)
+        self.idApi = try teamContainer.decode(Int.self, forKey: .id)
         self.played = try allContainer.decode(Int.self, forKey: .played)
         self.wins = try allContainer.decode(Int.self, forKey: .win)
         self.draws = try allContainer.decode(Int.self, forKey: .draw)
