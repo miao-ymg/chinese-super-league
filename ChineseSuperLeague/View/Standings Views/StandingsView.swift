@@ -42,12 +42,9 @@ struct StandingsView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            // TODO: Upper bar
-            HStack {
-                Text("Standings")
-                    .font(.ntfGrandItalicFont(36, weight: .medium))
-                    .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
-            }
+            // Top bar
+            TopBar()
+
             // League table header
             LeagueTableHeader()
 

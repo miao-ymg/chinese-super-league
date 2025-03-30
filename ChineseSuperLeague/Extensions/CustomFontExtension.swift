@@ -20,6 +20,16 @@ extension Font {
         }
     }
 
+    // NTF-Grand Font
+    static func ntfGrandFont(_ size: CGFloat, weight: Font.Weight) -> Font {
+        switch weight {
+        case .medium:
+            return .custom("NTF-Grand-Medium", size: size)
+        default:
+            return .custom("NTF-Grand-Regular", size: size)
+        }
+    }
+
     // NTF-Grand Italic Font
     static func ntfGrandItalicFont(_ size: CGFloat, weight: Font.Weight) -> Font {
         switch weight {
