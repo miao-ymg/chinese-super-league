@@ -17,12 +17,13 @@ struct TopBar: View {
             // TODO: Open menu to select competition
         } label: {
             HStack(alignment: .bottom) {
+                // Competition icon
                 Image("icon-CSL")
                     .renderingMode(.template)   // "Iconize" image
                     .resizable()
                     .frame(width: iconSize, height: iconSize)
                     .blur(radius: 0.15) // Soften the edges
-
+                // Competition name
                 Text("Chinese Super League")
                     .font(.ntfGrandFont(fontSize, weight: .medium))
                     .textCase(.uppercase)

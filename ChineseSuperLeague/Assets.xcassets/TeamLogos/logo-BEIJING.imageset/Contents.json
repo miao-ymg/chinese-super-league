@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "logo-BEIJING.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

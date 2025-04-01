@@ -26,12 +26,11 @@ let clubContainer: ModelContainer = {
 
         let clubs = [
             Club(id: "BEIJING", idApi: 830, nameShort: "Beijing Guoan"),
-            Club(id: "CANGZHOU", idApi: 849, nameShort: "Cangzhou ML"),
             Club(id: "CHANGCHUN", idApi: 834, nameShort: "Changchun YT"),
             Club(id: "CHENGDU", idApi: 5648, nameShort: "Chengdu RC"),
+            Club(id: "DALIAN", idApi: 21263, nameShort: "Dalian YB"),
             Club(id: "HENAN", idApi: 840, nameShort: "Henan FC"),
             Club(id: "MEIZHOU", idApi: 1439, nameShort: "Meizhou HK"),
-            Club(id: "NANTONG", idApi: 2626, nameShort: "Nantong ZY"),
             Club(id: "QINGDAO_WESTCOAST", idApi: 17265, nameShort: "Qingdao WC"),
             Club(id: "QINGDAO_HAINIU", idApi: 1431, nameShort: "Qingdao HN"),
             Club(id: "SHANDONG", idApi: 844, nameShort: "Shandong TS"),
@@ -39,7 +38,8 @@ let clubContainer: ModelContainer = {
             Club(id: "SHANGHAI_SHENHUA", idApi: 833, nameShort: "Shanghai SH"),
             Club(id: "SHENZHEN", idApi: 5686, nameShort: "Shenzhen PC"),
             Club(id: "TIANJIN", idApi: 837, nameShort: "Tianjin JMT"),
-            Club(id: "WUHAN", idApi: 5695, nameShort: "Wuhan TT"),
+            Club(id: "WUHAN", idApi: 5695, nameShort: "Wuhan 3T"),
+            Club(id: "YUNNAN", idApi: 21265, nameShort: "Yunnan YK"),
             Club(id: "ZHEJIANG", idApi: 848, nameShort: "Zhejiang FC")
         ]
 

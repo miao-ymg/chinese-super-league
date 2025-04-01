@@ -52,9 +52,9 @@ struct StandingsView: View {
                 // League standings
                 VStack(spacing: 0) {
                     ForEach((viewModel.teamList ?? []).indices, id: \.self) { rank in
-                        let club = viewModel.teamList![rank]
-                        if let clubName = getNameFromClubAPIID(idApi: club.idApi, clubs: clubs) {
-                            LeagueTableRow(leaguePosition: rank+1, club: club, clubName: clubName)
+                        let apiClub = viewModel.teamList![rank]
+                        if let deviceClub = getClubFromAPIID(idApi: apiClub.idApi, clubs: clubs) {
+                            LeagueTableRow(leaguePosition: rank+1, apiClub: apiClub, deviceClub: deviceClub)
                         }
                     }
                 }
