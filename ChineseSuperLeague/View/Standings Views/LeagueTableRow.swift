@@ -31,10 +31,9 @@ struct LeagueTableRow: View {
                 // Club
                 HStack {
                     // Crest
-                    Image("logo-\(deviceClub.id)")
+                    Image("crest-small-\(deviceClub.id)")
                         .resizable()
                         .frame(width: logoSize, height: logoSize)
-                        .blur(radius: 0.15)  // Soften the edges
                     Text("\(deviceClub.nameShort)")
                         .font(.poppinsFont(fontSize-1, weight: .regular))
                 }
