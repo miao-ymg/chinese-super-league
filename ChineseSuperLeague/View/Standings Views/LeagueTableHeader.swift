@@ -34,7 +34,7 @@ struct LeagueTableHeader: View {
         .frame(height: tableRowHeight)
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
         .foregroundColor(Color.dark1)
-        .fontWeight(.bold)
         .background(Color.accentColor)
+        .fontWeight(.bold)
     }
 }

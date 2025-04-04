@@ -11,7 +11,7 @@ import SwiftUI
 struct ChineseSuperLeagueApp: App {
     var body: some Scene {
         WindowGroup {
-            StandingsView()
+            ContentView()
         }
         .modelContainer(clubContainer)
     }

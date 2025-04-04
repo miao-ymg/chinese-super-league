@@ -42,9 +42,6 @@ struct StandingsView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            // Top bar
-            TopBar()
-
             // League table header
             LeagueTableHeader()
 
@@ -75,16 +72,10 @@ struct StandingsView: View {
             }
             .background(Color.dark1)
         }
-        .foregroundColor(Color.light1)
-        .background(Color.dark2)
         .font(.poppinsFont(fontSize, weight: .regular))
 
         .task {
             viewModel.getLeagueStandings()
         }
     }
-}
-
-#Preview {
-    StandingsView()
 }

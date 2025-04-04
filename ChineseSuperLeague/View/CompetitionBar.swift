@@ -1,5 +1,5 @@
 //
-//  TopBar.swift
+//  CompetitionBar.swift
 //  ChineseSuperLeague
 //
 //  Created by Sam Miao on 30.03.25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TopBar: View {
+struct CompetitionBar: View {
     let iconSize: CGFloat = 30
     let fontSize: CGFloat = 20
     let letterSpacing: CGFloat = 0.02
@@ -33,7 +33,6 @@ struct TopBar: View {
                     .frame(width: iconSize, height: iconSize)
                     .fontWeight(.bold)
             }
-            .foregroundColor(Color.light1)
             .padding(8)
         }
         .buttonStyle(PlainButtonStyle())
