@@ -9,8 +9,8 @@ import SwiftUI
 
 struct LeagueTableRow: View {
     let leaguePosition: Int
-    let apiClub: TeamStats  // Standings info fetched from the API
-    let deviceClub: Club    // Locally stored club information
+    let apiTeam: TeamStats  // Standings info fetched from the API
+    let deviceTeam: Team    // Locally stored team information
 
     var body: some View {
         let logoSize: CGFloat = 0.7 * tableRowHeight
@@ -28,30 +28,30 @@ struct LeagueTableRow: View {
                 Text("\(leaguePosition)")
                     .fontWeight(.semibold)
                     .horizPosItem(index: 0, totalWidth: screenWidth)
-                // Club
+                // Team
                 HStack {
                     // Crest
-                    Image("crest-small-\(deviceClub.id)")
+                    Image("crest-small-\(deviceTeam.id)")
                         .resizable()
                         .frame(width: logoSize, height: logoSize)
-                    Text("\(deviceClub.nameShort)")
+                    Text("\(deviceTeam.nameShort)")
                         .font(.poppinsFont(fontSize-1, weight: .regular))
                 }
                 .frame(width: 0.4 * screenWidth, alignment: .leading)
                 .horizPosItem(index: 1, totalWidth: screenWidth)
 
                 // Statistics
-                Text("\(apiClub.played)")
+                Text("\(apiTeam.played)")
                     .horizPosItem(index: 2, totalWidth: screenWidth)
-                Text("\(apiClub.wins)")
+                Text("\(apiTeam.wins)")
                     .horizPosItem(index: 3, totalWidth: screenWidth)
-                Text("\(apiClub.draws)")
+                Text("\(apiTeam.draws)")
                     .horizPosItem(index: 4, totalWidth: screenWidth)
-                Text("\(apiClub.losses)")
+                Text("\(apiTeam.losses)")
                     .horizPosItem(index: 5, totalWidth: screenWidth)
-                Text("\(apiClub.goalDifference > 0 ? "+" : "")\(apiClub.goalDifference)")
+                Text("\(apiTeam.goalDifference > 0 ? "+" : "")\(apiTeam.goalDifference)")
                     .horizPosItem(index: 6, totalWidth: screenWidth)
-                Text("\(apiClub.points)")
+                Text("\(apiTeam.points)")
                     .foregroundColor(Color.accentColor)
                     .fontWeight(.semibold)
                     .horizPosItem(index: 7, totalWidth: screenWidth)

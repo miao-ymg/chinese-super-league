@@ -33,6 +33,6 @@ func fetchLeagueStandings() throws -> [TeamStats] {
     }
 }
 
-func getClubFromAPIID(idApi: Int, clubs: [Club]) -> Club? {
-    return clubs.first { $0.idApi == idApi }
+func getTeamFromAPIID(idApi: Int, teams: [Team]) -> Team? {
+    return teams.first { $0.idApi == idApi }
 }

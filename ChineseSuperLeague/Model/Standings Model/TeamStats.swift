@@ -22,10 +22,10 @@ struct TeamStats: Decodable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let teamContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .team)
+        let teamsContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .team)
         let allContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .all)
 
-        self.idApi = try teamContainer.decode(Int.self, forKey: .id)
+        self.idApi = try teamsContainer.decode(Int.self, forKey: .id)
         self.played = try allContainer.decode(Int.self, forKey: .played)
         self.wins = try allContainer.decode(Int.self, forKey: .win)
         self.draws = try allContainer.decode(Int.self, forKey: .draw)

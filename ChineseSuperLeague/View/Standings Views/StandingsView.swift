@@ -36,7 +36,7 @@ struct TriviaItem: View {
 
 
 struct StandingsView: View {
-    @Query private var clubs: [Club]
+    @Query private var teams: [Team]
 
     @State private var viewModel = StandingsViewModel()
 
@@ -49,9 +49,9 @@ struct StandingsView: View {
                 // League standings
                 VStack(spacing: 0) {
                     ForEach((viewModel.teamList ?? []).indices, id: \.self) { rank in
-                        let apiClub = viewModel.teamList![rank]
-                        if let deviceClub = getClubFromAPIID(idApi: apiClub.idApi, clubs: clubs) {
-                            LeagueTableRow(leaguePosition: rank+1, apiClub: apiClub, deviceClub: deviceClub)
+                        let apiTeam = viewModel.teamList![rank]
+                        if let deviceTeam = getTeamFromAPIID(idApi: apiTeam.idApi, teams: teams) {
+                            LeagueTableRow(leaguePosition: rank+1, apiTeam: apiTeam, deviceTeam: deviceTeam)
                         }
                     }
                 }
