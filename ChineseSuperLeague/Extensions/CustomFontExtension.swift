@@ -39,4 +39,14 @@ extension Font {
             return .custom("NTF-Grand-Italic", size: size)
         }
     }
+
+    // Gustavo Font
+    static func gustavoFont(_ size: CGFloat, weight: Font.Weight) -> Font {
+        switch weight {
+        case .medium:
+            return .custom("Gustavo_trial-Medium", size: size)
+        default:
+            return .custom("Gustavo_trial-Regular", size: size)
+        }
+    }
 }

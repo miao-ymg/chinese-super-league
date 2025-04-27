@@ -24,7 +24,7 @@ struct TabItemView: View {
 // ----- CONTENT VIEW -----
 
 struct ContentView: View {
-    @State private var currentTab = "standings"
+    @State private var currentTab = "matches"
 
     let tabItemTags = ["rankings", "standings", "matches", "clubs", "settings"]
     let placeholderText = "Page in progress, coming soon! ^^"    // (Temporary)
@@ -47,7 +47,7 @@ struct ContentView: View {
                     }
                     .tag(tabItemTags[1])
 
-                Text(placeholderText)
+                MatchesView()
                     .tabItem {
                         TabItemView(tabLabel: tabItemTags[2], currentTab: currentTab)
                     }
