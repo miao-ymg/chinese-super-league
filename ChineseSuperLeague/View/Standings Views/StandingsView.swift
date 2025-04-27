@@ -11,6 +11,7 @@ import SwiftData
 // ----- CONSTANTS -----
 
 let fontSize: CGFloat = 13
+let legendFontSize: CGFloat = 11
 let tableRowHeight: CGFloat = 44
 let triviaItemHeight: CGFloat = 20
 // Default percentual horizontal positions for table items
@@ -30,7 +31,7 @@ struct TriviaItem: View {
         }
         .frame(height: triviaItemHeight)
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-        .font(.poppinsFont(0.8 * fontSize, weight: .regular))
+        .font(.poppinsFont(legendFontSize, weight: .regular))
     }
 }
 
@@ -66,7 +67,8 @@ struct StandingsView: View {
                         Text("* Last updated on <DATE>")
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.poppinsFont(0.7 * fontSize, weight: .regular))
+                    .foregroundColor(Color.secondary)
+                    .font(.poppinsFont(legendFontSize, weight: .regular))
                 }
                 .padding(8)
             }
