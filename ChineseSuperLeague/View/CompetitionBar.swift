@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct CompetitionBar: View {
-    let iconSize: CGFloat = 30
     let fontSize: CGFloat = 20
+    let iconSize: CGFloat = 28
+    let chevronSize: CGFloat = 16
     let letterSpacing: CGFloat = 0.02
 
     var body: some View {
         Button {
             // TODO: Open menu to select competition
         } label: {
-            HStack(alignment: .bottom) {
+            HStack {
                 // Competition icon
                 Image("icon-CSL")
                     .renderingMode(.template)   // "Iconize" image
@@ -28,10 +29,11 @@ struct CompetitionBar: View {
                     .font(.ntfGrandFont(fontSize, weight: .medium))
                     .textCase(.uppercase)
                     .tracking(fontSize * letterSpacing) // Letter spacing
+                    .baselineOffset(0.15 * fontSize)
 
                 Image(systemName: "chevron.down")
                     .frame(width: iconSize, height: iconSize)
-                    .fontWeight(.bold)
+                    .font(.ntfGrandFont(chevronSize, weight: .medium))
             }
             .padding(8)
         }
