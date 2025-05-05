@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct LeagueTableRow: View {
-    let leaguePosition: Int
-    let apiTeam: TeamStats  // Standings info fetched from the API
-    let deviceTeam: Team    // Locally stored team information
+    let team: Team          // Locally stored team profile
+    let stats: TeamStats    // Team stats fetched from the API
 
     var body: some View {
         let logoSize: CGFloat = 0.7 * tableRowHeight
@@ -20,38 +19,38 @@ struct LeagueTableRow: View {
                 let screenWidth = geometry.size.width
                 // Outcome indicator
                 Rectangle()
-                    .foregroundColor(colorByPosition(leaguePosition: leaguePosition))
+                    .foregroundColor(StandingsViewModel.colorByRank(leaguePosition: stats.rank))
                     .frame(width: 6)
                     .cornerRadius(1)
                     .padding(2)
                 // League position
-                Text("\(leaguePosition)")
+                Text("\(stats.rank)")
                     .fontWeight(.semibold)
                     .horizPosItem(index: 0, totalWidth: screenWidth)
                 // Team
                 HStack {
                     // Crest
-                    Image("crest-small-\(deviceTeam.id)")
+                    Image("crest-small-\(team.id)")
                         .resizable()
                         .frame(width: logoSize, height: logoSize)
-                    Text("\(deviceTeam.nameShort)")
+                    Text("\(team.nameShort)")
                         .font(.poppinsFont(fontSize-1, weight: .regular))
                 }
                 .frame(width: 0.4 * screenWidth, alignment: .leading)
                 .horizPosItem(index: 1, totalWidth: screenWidth)
 
                 // Statistics
-                Text("\(apiTeam.played)")
+                Text("\(stats.played)")
                     .horizPosItem(index: 2, totalWidth: screenWidth)
-                Text("\(apiTeam.wins)")
+                Text("\(stats.wins)")
                     .horizPosItem(index: 3, totalWidth: screenWidth)
-                Text("\(apiTeam.draws)")
+                Text("\(stats.draws)")
                     .horizPosItem(index: 4, totalWidth: screenWidth)
-                Text("\(apiTeam.losses)")
+                Text("\(stats.losses)")
                     .horizPosItem(index: 5, totalWidth: screenWidth)
-                Text("\(apiTeam.goalDifference > 0 ? "+" : "")\(apiTeam.goalDifference)")
+                Text("\(stats.goalDifference > 0 ? "+" : "")\(stats.goalDifference)")
                     .horizPosItem(index: 6, totalWidth: screenWidth)
-                Text("\(apiTeam.points)")
+                Text("\(stats.points)")
                     .foregroundColor(Color.accentColor)
                     .fontWeight(.semibold)
                     .horizPosItem(index: 7, totalWidth: screenWidth)
@@ -59,23 +58,5 @@ struct LeagueTableRow: View {
         }
         .frame(height: tableRowHeight)
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-    }
-}
-
-/**
- Map a league position to a color indicator in the league table view
- */
-private func colorByPosition(leaguePosition: Int) -> Color {
-    switch leaguePosition {
-    case 1:
-        return Color.aclElite
-    case 2:
-        return Color.aclPlayoff
-    case 3:
-        return Color.aclTwo
-    case 15, 16:
-        return Color.relegation
-    default:
-        return Color.clear
     }
 }
