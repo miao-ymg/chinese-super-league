@@ -10,8 +10,8 @@ import SwiftUI
 // ----- CONSTANTS -----
 
 let boxSize: CGFloat = 36
-let boxSpacing: CGFloat = 3
-let boxCornerRadius: CGFloat = 2
+let boxSpacing: CGFloat = 2
+let boxCornerRadius: CGFloat = boxSpacing
 let cardCornerRadius: CGFloat = 12
 
 // ----- VIEWS -----
@@ -37,15 +37,14 @@ struct GoalBox: View {
     var goals: Int
 
     var body: some View {
+        let boxRatio: CGFloat = 7/8
         let fontSize: CGFloat = 16
 
         Text("\(goals)")
-            .frame(width: boxSize, height: boxSize)
+            .frame(width: boxSize * boxRatio, height: boxSize)
             .foregroundColor(Color.dark2)
             .background(Color.light1)
-            .cornerRadius(boxCornerRadius)
-            .font(.gustavoFont(fontSize, weight: .medium))
-            .baselineOffset(0.2 * fontSize)
+            .font(.montserratFont(fontSize, weight: .semibold))
     }
 }
 
@@ -77,13 +76,18 @@ struct MatchCard: View {
                 HStack(spacing: boxSpacing) {
                     CrestBox(teamID: homeTeam.id)
                     // Scoreboard or Kick-off time
-                    GoalBox(goals: goals.0)
-                    GoalBox(goals: goals.1)
+                    HStack(spacing: boxSpacing) {
+                        GoalBox(goals: goals.0)
+                        GoalBox(goals: goals.1)
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: boxCornerRadius))
+
                     CrestBox(teamID: awayTeam.id)
                 }
                 Text(awayTeam.nameShort)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .font(.poppinsFont(fontSize + 1, weight: .regular))
             // Final outcome for knockout stage matches (e.g. aggregate score, penalty shootout result)
             Text(" ")
                 .foregroundStyle(.secondary)

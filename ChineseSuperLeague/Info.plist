@@ -4,8 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Gustavo-Regular.otf</string>
-		<string>Gustavo-Medium.otf</string>
+		<string>Montserrat-Regular.ttf</string>
+		<string>Montserrat-SemiBold.ttf</string>
 		<string>NTF-Grand-Regular.otf</string>
 		<string>NTF-Grand-Italic.otf</string>
 		<string>NTF-Grand-Medium.otf</string>

@@ -34,7 +34,7 @@ struct LeagueTableRow: View {
                         .resizable()
                         .frame(width: logoSize, height: logoSize)
                     Text("\(team.nameShort)")
-                        .font(.poppinsFont(fontSize-1, weight: .regular))
+                        .font(.poppinsFont(fontSize - 1, weight: .regular))
                 }
                 .frame(width: 0.4 * screenWidth, alignment: .leading)
                 .horizPosItem(index: 1, totalWidth: screenWidth)

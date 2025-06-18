@@ -40,13 +40,13 @@ extension Font {
         }
     }
 
-    // Gustavo Font
-    static func gustavoFont(_ size: CGFloat, weight: Font.Weight) -> Font {
+    // Montserrat Font
+    static func montserratFont(_ size: CGFloat, weight: Font.Weight) -> Font {
         switch weight {
-        case .medium:
-            return .custom("Gustavo_trial-Medium", size: size)
+        case .semibold:
+            return .custom("Montserrat-SemiBold", size: size)
         default:
-            return .custom("Gustavo_trial-Regular", size: size)
+            return .custom("Montserrat-Regular", size: size)
         }
     }
 }

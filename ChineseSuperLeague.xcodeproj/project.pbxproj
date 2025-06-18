@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		224A81502DBEC8AE00F9BACA /* Gustavo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 224A814F2DBEC8AE00F9BACA /* Gustavo-Regular.otf */; };
-		224A81532DBED07100F9BACA /* Gustavo-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 224A81522DBED07100F9BACA /* Gustavo-Medium.otf */; };
 		22792C802C9853890082BAC7 /* ChineseSuperLeagueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22792C7F2C9853890082BAC7 /* ChineseSuperLeagueApp.swift */; };
 		22792C842C98538B0082BAC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22792C832C98538B0082BAC7 /* Assets.xcassets */; };
 		22792C872C98538B0082BAC7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22792C862C98538B0082BAC7 /* Preview Assets.xcassets */; };
@@ -17,13 +15,13 @@
 		22792C992C985A430082BAC7 /* NTF-Grand-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C942C985A430082BAC7 /* NTF-Grand-MediumItalic.otf */; };
 		22792C9A2C985A430082BAC7 /* NTF-Grand-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C952C985A430082BAC7 /* NTF-Grand-Italic.otf */; };
 		22792C9B2C985A430082BAC7 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C962C985A430082BAC7 /* Poppins-Regular.ttf */; };
+		22B67EE52E00EBEB0093E549 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22B67EE42E00EBEB0093E549 /* Montserrat-Regular.ttf */; };
+		22B67EE72E00EBF40093E549 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22B67EE62E00EBF40093E549 /* Montserrat-SemiBold.ttf */; };
 		22CAB8AB2D98F28E00CCA91C /* NTF-Grand-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22CAB8AA2D98F28E00CCA91C /* NTF-Grand-Medium.otf */; };
 		22CAB8AD2D98F31B00CCA91C /* NTF-Grand-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22CAB8AC2D98F31B00CCA91C /* NTF-Grand-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		224A814F2DBEC8AE00F9BACA /* Gustavo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gustavo-Regular.otf"; sourceTree = "<group>"; };
-		224A81522DBED07100F9BACA /* Gustavo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gustavo-Medium.otf"; sourceTree = "<group>"; };
 		22792C7C2C9853890082BAC7 /* CSL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22792C7F2C9853890082BAC7 /* ChineseSuperLeagueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseSuperLeagueApp.swift; sourceTree = "<group>"; };
 		22792C832C98538B0082BAC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -34,6 +32,8 @@
 		22792C952C985A430082BAC7 /* NTF-Grand-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NTF-Grand-Italic.otf"; sourceTree = "<group>"; };
 		22792C962C985A430082BAC7 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		22792C9E2C985B7E0082BAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22B67EE42E00EBEB0093E549 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		22B67EE62E00EBF40093E549 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		22CAB8AA2D98F28E00CCA91C /* NTF-Grand-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NTF-Grand-Medium.otf"; sourceTree = "<group>"; };
 		22CAB8AC2D98F31B00CCA91C /* NTF-Grand-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NTF-Grand-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +101,8 @@
 		22792C912C985A1A0082BAC7 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				22B67EE42E00EBEB0093E549 /* Montserrat-Regular.ttf */,
+				22B67EE62E00EBF40093E549 /* Montserrat-SemiBold.ttf */,
 				22CAB8AC2D98F31B00CCA91C /* NTF-Grand-Regular.otf */,
 				22792C952C985A430082BAC7 /* NTF-Grand-Italic.otf */,
 				22CAB8AA2D98F28E00CCA91C /* NTF-Grand-Medium.otf */,
@@ -108,8 +110,6 @@
 				22792C962C985A430082BAC7 /* Poppins-Regular.ttf */,
 				22792C922C985A430082BAC7 /* Poppins-SemiBold.ttf */,
 				22792C932C985A430082BAC7 /* Poppins-Bold.ttf */,
-				224A814F2DBEC8AE00F9BACA /* Gustavo-Regular.otf */,
-				224A81522DBED07100F9BACA /* Gustavo-Medium.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -184,12 +184,12 @@
 				22CAB8AD2D98F31B00CCA91C /* NTF-Grand-Regular.otf in Resources */,
 				22CAB8AB2D98F28E00CCA91C /* NTF-Grand-Medium.otf in Resources */,
 				22792C872C98538B0082BAC7 /* Preview Assets.xcassets in Resources */,
-				224A81502DBEC8AE00F9BACA /* Gustavo-Regular.otf in Resources */,
+				22B67EE52E00EBEB0093E549 /* Montserrat-Regular.ttf in Resources */,
 				22792C9B2C985A430082BAC7 /* Poppins-Regular.ttf in Resources */,
 				22792C842C98538B0082BAC7 /* Assets.xcassets in Resources */,
 				22792C9A2C985A430082BAC7 /* NTF-Grand-Italic.otf in Resources */,
+				22B67EE72E00EBF40093E549 /* Montserrat-SemiBold.ttf in Resources */,
 				22792C992C985A430082BAC7 /* NTF-Grand-MediumItalic.otf in Resources */,
-				224A81532DBED07100F9BACA /* Gustavo-Medium.otf in Resources */,
 				22792C982C985A430082BAC7 /* Poppins-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
