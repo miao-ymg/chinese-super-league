@@ -17,13 +17,19 @@ let percentualPositions = [0.06, 0.3, 0.54, 0.62, 0.7, 0.78, 0.86, 0.95]    // D
 
 
 struct Team: Decodable {
-    var name: String = "Club name"
-    var played: Int = 0
-    var wins: Int = 0
-    var draws: Int = 0
-    var losses: Int = 0
-    var goalDifference: Int = 0
-    var points: Int = 0
+    let name: String
+    let played: Int
+    let wins: Int
+    let draws: Int
+    let losses: Int
+    let goalDifference: Int
+    let points: Int
+    
+    // All JSON properties to decode
+    enum CodingKeys: String, CodingKey {
+        case name = "teamName"
+        case played, wins, draws, losses, goalDifference, points
+    }
 }
 
 
@@ -37,11 +43,20 @@ extension View {
 }
 
 
+// --- ERRORS ---
+
+enum MyError: Error {
+    case invalidURL
+    case invalidData
+}
+
+
 // --- VIEWS ---
 
 struct StandingsHeader: View {
     var body: some View {
         ZStack {
+            // ZStack & GeometryReader for fixed positioning
             GeometryReader { geometry in
                 let screenWidth = geometry.size.width
                 
@@ -123,7 +138,7 @@ struct StandingsRow: View {
                     .horizPosItem(index: 4, totalWidth: screenWidth)
                 Text("\(team.losses)")
                     .horizPosItem(index: 5, totalWidth: screenWidth)
-                Text("\(team.goalDifference)")
+                Text("\(team.goalDifference > 0 ? "+" : "")\(team.goalDifference)")
                     .horizPosItem(index: 6, totalWidth: screenWidth)
                 Text("\(team.points)")
                     .foregroundColor(Color.accentColor)
@@ -156,13 +171,40 @@ struct TriviaItem: View {
 
 // Main view
 struct Standings: View {
-    let team = Team()
     let triviaItems = [
         ("AFC Champions League Elite", Color.aclElite),
 //        ("AFC Champions League Elite play-off", Color.aclPlayoff),
         ("AFC Champions League Two", Color.aclTwo),
         ("Relegation", Color.relegation),
     ]
+    
+    func getTeams() throws -> [Team] {
+        // Read data from JSON file
+        guard let filePath = Bundle.main.url(forResource: "mock_standings", withExtension: "json") else {
+            throw MyError.invalidURL
+        }
+        let data = try Data(contentsOf: filePath)
+        
+        // Deserialization
+        if let dataModel = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+           let standings = (dataModel["data"] as? [[String: Any]]) {
+            
+            // Serialization
+            let teamsData = try JSONSerialization.data(withJSONObject: standings)
+            // Decoding step
+            return try JSONDecoder().decode([Team].self, from: teamsData)
+        } else {
+            throw MyError.invalidData
+        }
+    }
+    
+    // We need a teamList first
+    
+    // @State
+    // - View will be re-rendered, once the variable state changes
+    // - For local state variables only used by this View itself
+    // Optional, because teamList doesn't exist yet before function call
+    @State private var teamList: [Team]?
     
     var body: some View {
         VStack(spacing: 0) {
@@ -178,12 +220,12 @@ struct Standings: View {
             ScrollView {
                 // Standings
                 VStack(spacing: 0) {
-                    ForEach(1...16, id: \.self) { i in
-                        StandingsRow(rank: i, team: team)
+                    ForEach((teamList ?? []).indices, id: \.self) { i in
+                        StandingsRow(rank: i+1, team: teamList![i])
                     }
                 }
-                // Trivia
                 VStack {
+                    // Trivia
                     ForEach(triviaItems, id: \.0) { item in
                         TriviaItem(outcome: item.0, circleColor: item.1)
                     }
@@ -201,6 +243,19 @@ struct Standings: View {
         }
         .background(Color.dark2)
         .font(.poppinsFont(fontSize, weight: .regular))
+        
+        .task {
+            do {
+                teamList = try getTeams()
+                
+            } catch MyError.invalidURL {
+                print("ERROR: Invalid URL")
+            } catch MyError.invalidData {
+                print("ERROR: Invalid Data")
+            } catch {
+                print("ERROR: Unexpected error")
+            }
+        }
     }
 }
 

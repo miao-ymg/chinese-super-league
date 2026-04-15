@@ -15,6 +15,7 @@
 		22792C972C985A430082BAC7 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C922C985A430082BAC7 /* Poppins-SemiBold.ttf */; };
 		22792C982C985A430082BAC7 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C932C985A430082BAC7 /* Poppins-Bold.ttf */; };
 		22792C9B2C985A430082BAC7 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22792C962C985A430082BAC7 /* Poppins-Regular.ttf */; };
+		22903B442C99B2F9000DC352 /* mock_standings.json in Resources */ = {isa = PBXBuildFile; fileRef = 22903B432C99B2F9000DC352 /* mock_standings.json */; };
 		22D8E5D52F8D5DFA004299F6 /* NTF-Grand-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22D8E5D42F8D5DFA004299F6 /* NTF-Grand-Regular.otf */; };
 		22D8E5D72F8D5DFF004299F6 /* NTF-Grand-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22D8E5D62F8D5DFF004299F6 /* NTF-Grand-Medium.otf */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		22792C932C985A430082BAC7 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		22792C962C985A430082BAC7 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		22792C9E2C985B7E0082BAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		22903B432C99B2F9000DC352 /* mock_standings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mock_standings.json; sourceTree = "<group>"; };
 		22D8E5D42F8D5DFA004299F6 /* NTF-Grand-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NTF-Grand-Regular.otf"; sourceTree = "<group>"; };
 		22D8E5D62F8D5DFF004299F6 /* NTF-Grand-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NTF-Grand-Medium.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +73,7 @@
 				22792C8D2C98548D0082BAC7 /* Standings.swift */,
 				22792C8F2C9859E20082BAC7 /* CustomFontExtension.swift */,
 				22792C912C985A1A0082BAC7 /* Fonts */,
+				22903B432C99B2F9000DC352 /* mock_standings.json */,
 			);
 			path = ChineseSuperLeague;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22792C972C985A430082BAC7 /* Poppins-SemiBold.ttf in Resources */,
+				22903B442C99B2F9000DC352 /* mock_standings.json in Resources */,
 				22792C872C98538B0082BAC7 /* Preview Assets.xcassets in Resources */,
 				22D8E5D72F8D5DFF004299F6 /* NTF-Grand-Medium.otf in Resources */,
 				22792C9B2C985A430082BAC7 /* Poppins-Regular.ttf in Resources */,
