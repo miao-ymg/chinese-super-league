@@ -6,7 +6,7 @@
 //
 
 struct TeamStats: Decodable {
-    let name: String
+    let idApi: Int
     let played: Int
     let wins: Int
     let draws: Int
@@ -16,7 +16,7 @@ struct TeamStats: Decodable {
 
     // All JSON properties to decode
     enum CodingKeys: String, CodingKey {
-        case name = "teamName"
+        case idApi = "teamId"
         case played, wins, draws, losses, goalDifference, points
     }
 }

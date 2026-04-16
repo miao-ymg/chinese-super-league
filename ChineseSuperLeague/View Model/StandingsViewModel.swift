@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import os
 
 @Observable class StandingsViewModel {
     var teamList: [TeamStats]?  // Optional, because `teamList doesn't exist yet before function call
@@ -20,11 +21,11 @@ import SwiftUI
         do {
             teamList = try fetchLeagueStandings()
         } catch NetworkError.invalidURL {
-            print("ERROR: Invalid URL")
+            Logger().info("ERROR: Invalid URL")
         } catch NetworkError.invalidData {
-            print("ERROR: Invalid Data")
+            Logger().info("ERROR: Invalid Data")
         } catch {
-            print("ERROR: Unexpected error")
+            Logger().info("ERROR: Unexpected error")
         }
     }
 }
