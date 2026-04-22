@@ -1,5 +1,5 @@
 //
-//  Club.swift
+//  Team.swift
 //  ChineseSuperLeague
 //
 //  Created by Sam Miao on 16.04.26.
@@ -8,7 +8,7 @@
 import SwiftData
 
 @Model
-class Club {
+class Team {
     var id: String
     var idApi: Int
     var nameShort: String

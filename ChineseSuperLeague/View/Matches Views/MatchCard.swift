@@ -17,13 +17,13 @@ let cardCornerRadius: CGFloat = 12
 // ----- VIEWS -----
 
 struct LogoBox: View {
-    let clubID: String
+    let teamID: String
 
     var body: some View {
         let logoSize: CGFloat = 0.8 * boxSize
 
         ZStack {
-            Image("logo-small-\(clubID)")
+            Image("logo-small-\(teamID)")
                 .resizable()
                 .frame(width: logoSize, height: logoSize)
         }
@@ -50,8 +50,8 @@ struct GoalBox: View {
 
 
 struct MatchCard: View {
-    let homeTeam: Club
-    let awayTeam: Club
+    let homeTeam: Team
+    let awayTeam: Team
     var goals: (Int, Int)
     var matchStatus: String
 
@@ -74,7 +74,7 @@ struct MatchCard: View {
                 Text(homeTeam.nameShort)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 HStack(spacing: boxSpacing) {
-                    LogoBox(clubID: homeTeam.id)
+                    LogoBox(teamID: homeTeam.id)
                     // Scoreboard or Kick-off time
                     HStack(spacing: boxSpacing) {
                         GoalBox(goals: goals.0)
@@ -82,7 +82,7 @@ struct MatchCard: View {
                     }
                     .clipShape(RoundedRectangle(cornerRadius: boxCornerRadius))
 
-                    LogoBox(clubID: awayTeam.id)
+                    LogoBox(teamID: awayTeam.id)
                 }
                 Text(awayTeam.nameShort)
                     .frame(maxWidth: .infinity, alignment: .leading)

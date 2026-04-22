@@ -13,6 +13,6 @@ struct ChineseSuperLeagueApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(clubContainer)
+        .modelContainer(teamsContainer)
     }
 }

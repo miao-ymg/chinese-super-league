@@ -14,7 +14,7 @@ struct LeagueTableHeader: View {
             GeometryReader { geometry in
                 let screenWidth = geometry.size.width
 
-                Text("Club")
+                Text("Team")
                     .frame(width: 0.4 * screenWidth, alignment: .leading)
                     .horizPosItem(index: 1, totalWidth: screenWidth)
                 Text("MP")
