@@ -29,4 +29,14 @@ extension Font {
             return .custom("NTF-Grand-Regular", size: size)
         }
     }
+
+    // Montserrat Font
+    static func montserratFont(_ size: CGFloat, weight: Font.Weight) -> Font {
+        switch weight {
+        case .semibold:
+            return .custom("Montserrat-SemiBold", size: size)
+        default:
+            return .custom("Montserrat-Regular", size: size)
+        }
+    }
 }

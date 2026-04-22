@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var activeTab: Tab = .standings
+    @State private var activeTab: Tab = .matches
 
     let placeholderText = "Page in progress, coming soon! ^^"    // (Temporary)
 
@@ -22,7 +22,7 @@ struct ContentView: View {
                 switch activeTab {
                 case .rankings:     Text(placeholderText)
                 case .standings:    StandingsView()
-                case .matches:      Text(placeholderText)
+                case .matches:      MatchesView()
                 case .teams:        Text(placeholderText)
                 case .settings:     Text(placeholderText)
                 }
