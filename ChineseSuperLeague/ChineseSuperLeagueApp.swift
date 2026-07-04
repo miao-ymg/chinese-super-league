@@ -18,6 +18,6 @@ struct ChineseSuperLeagueApp: App {
                     await vm.fetchTeams()
                 }
         }
-        .modelContainer(teamsContainer)
+        .modelContainer(modelContainer)
     }
 }

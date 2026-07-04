@@ -17,7 +17,7 @@ let cardCornerRadius: CGFloat = 12
 // ----- VIEWS -----
 
 struct LogoBox: View {
-    let teamID: String
+    let teamID: Int
 
     var body: some View {
         let logoSize: CGFloat = 0.8 * boxSize

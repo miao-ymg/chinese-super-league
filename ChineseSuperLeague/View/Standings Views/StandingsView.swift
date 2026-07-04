@@ -50,10 +50,12 @@ struct StandingsView: View {
                 // League standings
                 VStack(spacing: 0) {
                     ForEach((viewModel.teamList ?? []).indices, id: \.self) { rank in
+                        /*
                         let apiTeam = viewModel.teamList![rank]
                         if let deviceTeam = getTeamFromAPIID(idApi: apiTeam.idApi, teams: teams) {
                             LeagueTableRow(leaguePosition: rank+1, apiTeam: apiTeam, deviceTeam: deviceTeam)
                         }
+                         */
                     }
                 }
                 VStack {
