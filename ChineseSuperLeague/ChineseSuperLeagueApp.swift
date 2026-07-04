@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct ChineseSuperLeagueApp: App {
+    @StateObject private var vm = AppViewModel()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .task {
+                    await vm.fetchTeams()
+                }
         }
         .modelContainer(teamsContainer)
     }
