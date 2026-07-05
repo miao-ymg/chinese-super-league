@@ -15,7 +15,7 @@ struct ChineseSuperLeagueApp: App {
         WindowGroup {
             ContentView()
                 .task {
-                    await vm.fetchTeams()
+                    await vm.syncAndStore()
                 }
         }
         .modelContainer(modelContainer)

@@ -11,8 +11,14 @@ import os
 @MainActor
 class AppViewModel: ObservableObject {
 
-    func fetchTeams() async {
+    func syncAndStore() async {
         do {
+            // Sync & store standings
+            let standings: [StandingDTO] = try await NetworkClient.fetch(path: "/standings/CSL")
+            Logger().debug("\(standings)")
+            try DatabaseService.store(as: Standing.self, dtos: standings)
+
+            // Sync & store teams
             guard try DatabaseService.hasNoEntries(for: Team.self) else {
                 Logger().info("Info: Teams have already been imported into the database")
                 return

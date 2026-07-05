@@ -5,27 +5,29 @@
 //  Created by Sam Miao on 16.04.26.
 //
 
-import SwiftUI
+import Foundation
 import os
 
-@Observable class StandingsViewModel {
-    var teamList: [TeamStats]?  // Optional, because `teamList doesn't exist yet before function call
-    let triviaItems = [
-        ("AFC Champions League Elite", Color.aclElite),
-//        ("AFC Champions League Elite play-off", Color.aclPlayoff),
-        ("AFC Champions League Two", Color.aclTwo),
-        ("Relegation", Color.relegation)
-    ]
+@MainActor
+class StandingsViewModel: ObservableObject {
+    @Published var standingsData: [(standing: Standing, shortName: String?)] = []
 
-    func getLeagueStandings() {
+    func loadStandings() {
         do {
-            teamList = try fetchLeagueStandings()
-        } catch NetworkError.invalidURL {
-            Logger().info("ERROR: Invalid URL")
-        } catch NetworkError.invalidData {
-            Logger().info("ERROR: Invalid Data")
+            // Query all DB entities
+            var standings = try DatabaseService.queryAll(for: Standing.self)
+            let teams = try DatabaseService.queryAll(for: Team.self)
+
+            // Sort standings by ascending table rank
+            standings = standings.sorted { $0.rank < $1.rank }
+
+            // Join standings with abbreviated team names
+            standingsData = standings.map { standing in
+                let team = teams.first { $0.id == standing.teamId }
+                return (standing, team?.nameShort)
+            }
         } catch {
-            Logger().info("ERROR: Unexpected error")
+            Logger().error("Failed loading standings!")
         }
     }
 }

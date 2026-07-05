@@ -31,4 +31,10 @@ enum DatabaseService {
         descriptor.fetchLimit = 1
         return try context.fetch(descriptor).isEmpty
     }
+
+    /// Query all entities of the given model type from the database
+    static func queryAll<M: PersistentModel>(for type: M.Type) throws -> [M] {
+        let descriptor = FetchDescriptor<M>()
+        return try context.fetch(descriptor)
+    }
 }

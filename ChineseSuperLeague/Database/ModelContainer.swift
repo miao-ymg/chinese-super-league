@@ -12,6 +12,7 @@ let modelContainer: ModelContainer = {
 
     // --- All @Model types given here ---
     let schema = Schema([
+        Standing.self,
         Team.self
     ])
 

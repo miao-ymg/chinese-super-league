@@ -17,6 +17,13 @@ let triviaItemHeight: CGFloat = 20
 // Default percentual horizontal positions for table items
 let percentualPositions = [0.06, 0.3, 0.54, 0.62, 0.7, 0.78, 0.86, 0.95]
 
+let triviaItems: [(text: String, color: Color)] = [
+    ("AFC Champions League Elite", Color.aclElite),
+//    ("AFC Champions League Elite play-off", Color.aclPlayoff),
+    ("AFC Champions League Two", Color.aclTwo),
+    ("Relegation", Color.relegation)
+]
+
 // ----- VIEWS -----
 
 struct TriviaItem: View {
@@ -37,9 +44,7 @@ struct TriviaItem: View {
 
 
 struct StandingsView: View {
-    @Query private var teams: [Team]
-
-    @State private var viewModel = StandingsViewModel()
+    @StateObject private var vm = StandingsViewModel()
 
     var body: some View {
         VStack(spacing: 0) {
@@ -49,19 +54,14 @@ struct StandingsView: View {
             ScrollView {
                 // League standings
                 VStack(spacing: 0) {
-                    ForEach((viewModel.teamList ?? []).indices, id: \.self) { rank in
-                        /*
-                        let apiTeam = viewModel.teamList![rank]
-                        if let deviceTeam = getTeamFromAPIID(idApi: apiTeam.idApi, teams: teams) {
-                            LeagueTableRow(leaguePosition: rank+1, apiTeam: apiTeam, deviceTeam: deviceTeam)
-                        }
-                         */
+                    ForEach(vm.standingsData, id: \.standing.teamId) { entry in
+                        LeagueTableRow(standingData: entry)
                     }
                 }
                 VStack {
                     // Trivia
-                    ForEach(viewModel.triviaItems, id: \.0) { item in
-                        TriviaItem(leagueOutcome: item.0, circleColor: item.1)
+                    ForEach(triviaItems, id: \.text) { item in
+                        TriviaItem(leagueOutcome: item.text, circleColor: item.color)
                     }
                     // Notes
                     Group {
@@ -79,7 +79,7 @@ struct StandingsView: View {
         .font(.poppinsFont(fontSize, weight: .regular))
 
         .task {
-            viewModel.getLeagueStandings()
+            vm.loadStandings()
         }
     }
 }

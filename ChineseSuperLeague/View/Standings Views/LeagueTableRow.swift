@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct LeagueTableRow: View {
-    let leaguePosition: Int
-    let apiTeam: TeamStats  // Standings info fetched from the API
-    let deviceTeam: Team    // Locally stored team information
+    let standingData: (standing: Standing, shortName: String?)
 
     var body: some View {
+        let standing = standingData.standing
         let logoSize: CGFloat = 30
 
         ZStack {
@@ -20,37 +19,37 @@ struct LeagueTableRow: View {
                 let screenWidth = geometry.size.width
                 // Table zone indicator
                 Rectangle()
-                    .foregroundColor(colorByPosition(leaguePosition: leaguePosition))
+                    .foregroundColor(colorByPosition(leaguePosition: standing.rank))
                     .frame(width: 4)
                     .padding(1)
                 // League position
-                Text("\(leaguePosition)")
+                Text("\(standing.rank)")
                     .fontWeight(.semibold)
                     .horizPosItem(index: 0, totalWidth: screenWidth)
                 // Team
                 HStack {
                     // Logo
-                    Image("logo-small-\(deviceTeam.id)")
-                        .resizable()
+                    Circle()
+                        .foregroundColor(Color.dark2)
                         .frame(width: logoSize, height: logoSize)
-                    Text("\(deviceTeam.nameShort)")
+                    Text("\(standingData.shortName ?? standing.teamName)")
                         .font(.poppinsFont(fontSize - 1, weight: .regular))
                 }
                 .frame(width: 0.4 * screenWidth, alignment: .leading)
                 .horizPosItem(index: 1, totalWidth: screenWidth)
 
                 // Statistics
-                Text("\(apiTeam.played)")
+                Text("\(standing.played)")
                     .horizPosItem(index: 2, totalWidth: screenWidth)
-                Text("\(apiTeam.wins)")
+                Text("\(standing.wins)")
                     .horizPosItem(index: 3, totalWidth: screenWidth)
-                Text("\(apiTeam.draws)")
+                Text("\(standing.draws)")
                     .horizPosItem(index: 4, totalWidth: screenWidth)
-                Text("\(apiTeam.losses)")
+                Text("\(standing.losses)")
                     .horizPosItem(index: 5, totalWidth: screenWidth)
-                Text("\(apiTeam.goalDifference > 0 ? "+" : "")\(apiTeam.goalDifference)")
+                Text("\(standing.goalDifference > 0 ? "+" : "")\(standing.goalDifference)")
                     .horizPosItem(index: 6, totalWidth: screenWidth)
-                Text("\(apiTeam.points)")
+                Text("\(standing.points)")
                     .foregroundColor(Color.accentColor)
                     .fontWeight(.semibold)
                     .horizPosItem(index: 7, totalWidth: screenWidth)
