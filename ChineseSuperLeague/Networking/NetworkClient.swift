@@ -43,4 +43,23 @@ enum NetworkClient {
         Logger().info("Successfully fetched from '\(path)' endpoint!")
         return envelope.data
     }
+
+    /// Fetch images for the given file paths
+    static func fetchImages(paths: [String], type: String) async {
+        guard let baseURL else { return }
+
+        await withTaskGroup(of: Void.self) { group in
+            for path in paths {
+                group.addTask {
+                    // Perform API request
+                    guard let url = URL(string: baseURL + path) else { return }
+                    guard let (data, _) = try? await URLSession.shared.data(from: url) else { return }
+
+                    // Store persistently to disk
+                    let fileName = "\(type)-\(url.lastPathComponent)"
+                    DiskCache.save(data: data, fileName: fileName)
+                }
+            }
+        }
+    }
 }

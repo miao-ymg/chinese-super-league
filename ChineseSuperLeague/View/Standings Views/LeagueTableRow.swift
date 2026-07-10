@@ -12,7 +12,7 @@ struct LeagueTableRow: View {
 
     var body: some View {
         let standing = standingData.standing
-        let logoSize: CGFloat = 30
+        let logoSize: CGFloat = 26
 
         ZStack {
             GeometryReader { geometry in
@@ -27,11 +27,14 @@ struct LeagueTableRow: View {
                     .fontWeight(.semibold)
                     .horizPosItem(index: 0, totalWidth: screenWidth)
                 // Team
-                HStack {
+                HStack(spacing: 8) {
                     // Logo
-                    Circle()
-                        .foregroundColor(Color.dark2)
-                        .frame(width: logoSize, height: logoSize)
+                    if let logo = MemoryCache.getMiniTeamLogo(id: standing.teamId) {
+                        Image(uiImage: logo)
+                            .resizable()
+                            .interpolation(.high)
+                            .frame(width: logoSize, height: logoSize)
+                    }
                     Text("\(standingData.shortName ?? standing.teamName)")
                         .font(.poppinsFont(fontSize - 1, weight: .regular))
                 }

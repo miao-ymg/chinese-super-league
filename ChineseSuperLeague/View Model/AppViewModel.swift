@@ -13,20 +13,23 @@ class AppViewModel: ObservableObject {
 
     func syncAndStore() async {
         do {
+            // Sync & store team data + logos
+            if try DatabaseService.hasNoEntries(for: Team.self) {
+                let teams: [TeamDTO] = try await NetworkClient.fetch(path: "/teams")
+                Logger().debug("\(teams)")
+                try DatabaseService.store(as: Team.self, dtos: teams)
+
+                await NetworkClient.fetchImages(paths: teams.map { $0.logoUrl }, type: "logo")
+            } else {
+                Logger().info("Info: Teams have already been imported into the database")
+            }
+            // Load team logos from disk to buffer
+            MemoryCache.bufferTeamLogos()
+
             // Sync & store standings
             let standings: [StandingDTO] = try await NetworkClient.fetch(path: "/standings/CSL")
             Logger().debug("\(standings)")
             try DatabaseService.store(as: Standing.self, dtos: standings)
-
-            // Sync & store teams
-            guard try DatabaseService.hasNoEntries(for: Team.self) else {
-                Logger().info("Info: Teams have already been imported into the database")
-                return
-            }
-
-            let teams: [TeamDTO] = try await NetworkClient.fetch(path: "/teams")
-            Logger().debug("\(teams)")
-            try DatabaseService.store(as: Team.self, dtos: teams)
 
         } catch NetworkError.invalidURL {
             Logger().error("Invalid URL!")
