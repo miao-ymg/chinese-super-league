@@ -22,14 +22,15 @@ struct LogoBox: View {
     let color: Color
 
     var body: some View {
-        let logoSize: CGFloat = 0.8 * boxSize
+        let logoSize: CGFloat = 26
 
         ZStack {
-            /*
-            Image("logo-small-\(teamID)")
-                .resizable()
-                .frame(width: logoSize, height: logoSize)
-             */
+            if let logo = MemoryCache.getMiniTeamLogo(id: teamID) {
+                Image(uiImage: logo)
+                    .resizable()
+                    .interpolation(.high)
+                    .frame(width: logoSize, height: logoSize)
+            }
         }
         .frame(width: boxSize, height: boxSize)
         .background(color)
