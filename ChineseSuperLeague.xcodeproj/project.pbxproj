@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		224C552E2FFAEF0500C6CD65 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 224C552D2FFAEF0500C6CD65 /* Config.xcconfig */; };
+		225F13022FFEE18E009A54B7 /* NTF-Grand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 225F13012FFEE18E009A54B7 /* NTF-Grand-Bold.otf */; };
 		22792C802C9853890082BAC7 /* ChineseSuperLeagueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22792C7F2C9853890082BAC7 /* ChineseSuperLeagueApp.swift */; };
 		22792C842C98538B0082BAC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22792C832C98538B0082BAC7 /* Assets.xcassets */; };
 		22792C872C98538B0082BAC7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22792C862C98538B0082BAC7 /* Preview Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		224C552D2FFAEF0500C6CD65 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		225F13012FFEE18E009A54B7 /* NTF-Grand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NTF-Grand-Bold.otf"; sourceTree = "<group>"; };
 		22792C7C2C9853890082BAC7 /* CSL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22792C7F2C9853890082BAC7 /* ChineseSuperLeagueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChineseSuperLeagueApp.swift; sourceTree = "<group>"; };
 		22792C832C98538B0082BAC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				22A516352F9963F500525C4B /* Montserrat-SemiBold.ttf */,
 				22D8E5D42F8D5DFA004299F6 /* NTF-Grand-Regular.otf */,
 				22D8E5D62F8D5DFF004299F6 /* NTF-Grand-Medium.otf */,
+				225F13012FFEE18E009A54B7 /* NTF-Grand-Bold.otf */,
 				22792C962C985A430082BAC7 /* Poppins-Regular.ttf */,
 				22792C922C985A430082BAC7 /* Poppins-SemiBold.ttf */,
 				22792C932C985A430082BAC7 /* Poppins-Bold.ttf */,
@@ -186,6 +189,7 @@
 				22792C972C985A430082BAC7 /* Poppins-SemiBold.ttf in Resources */,
 				22792C872C98538B0082BAC7 /* Preview Assets.xcassets in Resources */,
 				22D8E5D72F8D5DFF004299F6 /* NTF-Grand-Medium.otf in Resources */,
+				225F13022FFEE18E009A54B7 /* NTF-Grand-Bold.otf in Resources */,
 				22792C9B2C985A430082BAC7 /* Poppins-Regular.ttf in Resources */,
 				22792C842C98538B0082BAC7 /* Assets.xcassets in Resources */,
 				22D8E5D52F8D5DFA004299F6 /* NTF-Grand-Regular.otf in Resources */,

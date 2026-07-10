@@ -25,6 +25,8 @@ extension Font {
         switch weight {
         case .medium:
             return .custom("NTF-Grand-Medium", size: size)
+        case .bold:
+            return .custom("NTF-Grand-Bold", size: size)
         default:
             return .custom("NTF-Grand-Regular", size: size)
         }
