@@ -13,7 +13,8 @@ let modelContainer: ModelContainer = {
     // --- All @Model types given here ---
     let schema = Schema([
         Standing.self,
-        Team.self
+        Team.self,
+        Match.self
     ])
 
     do {
