@@ -31,6 +31,11 @@ class AppViewModel: ObservableObject {
             Logger().debug("\(standings)")
             try DatabaseService.store(as: Standing.self, dtos: standings)
 
+            // Sync & store all matches
+            let matches: [MatchDTO] = try await NetworkClient.fetch(path: "/matches/competition/CSL")
+            Logger().debug("\(matches)")
+            try DatabaseService.store(as: Match.self, dtos: matches)
+
         } catch NetworkError.invalidURL {
             Logger().error("Invalid URL!")
         } catch NetworkError.invalidResponse {

@@ -8,6 +8,16 @@
 import Foundation
 
 extension Date {
+    private static let formatter = ISO8601DateFormatter()
+
+    /// Initialize a Date from a date string
+    init?(from dateString: String) {
+        guard let date = Date.formatter.date(from: dateString) else {
+            return nil
+        }
+        self = date
+    }
+
     /// Return a Date in 'dd MMM yyyy' format
     var date: String {
         return self.formatted(.dateTime
