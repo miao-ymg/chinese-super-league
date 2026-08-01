@@ -28,6 +28,10 @@ extension Date {
         )
     }
 
+    var withoutTime: Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+
     /// Return the time of a Date in 24-hour time format
     var time: String {
         return self.formatted(.dateTime

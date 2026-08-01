@@ -28,14 +28,19 @@ struct MatchdayLabel: View {
 }
 
 struct MatchDateLabel: View {
-    let date: Date
+    let date: Date?
 
     var body: some View {
         HStack {
-            Text(date.day)
-                .fontWeight(.semibold)
-            + Text(" • \(date.date)")
-                .foregroundColor(Color.light10)
+            if let date {
+                Text(date.day)
+                    .fontWeight(.semibold)
+                + Text(" • \(date.date)")
+                    .foregroundColor(Color.light10)
+            } else {
+                Text("Date TBD")
+            }
+
             Spacer()
         }
         .padding(.horizontal, 16)
@@ -50,8 +55,16 @@ struct MatchesView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: spacing) {
-                ForEach(vm.matchesData, id: \.match.id) { entry in
-                    MatchCard(vm: vm, match: entry.match, home: entry.home, away: entry.away)
+                ForEach(vm.groupedMatches) { mdGroup in
+                    MatchdayLabel(matchday: mdGroup.matchday)
+
+                    ForEach(mdGroup.dates) { dateGroup in
+                        MatchDateLabel(date: dateGroup.date)
+
+                        ForEach(dateGroup.matches, id: \.match.id) { entry in
+                            MatchCard(vm: vm, match: entry.match, home: entry.home, away: entry.away)
+                        }
+                    }
                 }
             }
             .padding(8)

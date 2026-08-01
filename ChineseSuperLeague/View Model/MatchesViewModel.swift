@@ -15,20 +15,30 @@ struct MatchData {
     let away: Team?
 }
 
+struct DateGroup: Identifiable {
+    let date: Date?
+    let matches: [MatchData]
+
+    var id: Date? { date }
+}
+
+struct MatchdayGroup: Identifiable {
+    let matchday: Int
+    let dates: [DateGroup]
+
+    var id: Int { matchday }
+}
+
 
 @MainActor
 class MatchesViewModel: ObservableObject {
-    @Published var matchesData: [MatchData] = []
+    @Published var groupedMatches: [MatchdayGroup] = []
+    private var matchesData: [MatchData] = []
 
     func loadAllMatches() {
         do {
-            var matches = try DatabaseService.queryAll(for: Match.self)
+            let matches = try DatabaseService.queryAll(for: Match.self)
             let teams = try DatabaseService.queryAll(for: Team.self)
-
-            // Sort matches by matchday, then by date (matches without date sort last)
-            matches = matches.sorted {
-                ($0.matchday, $0.date ?? .distantFuture) < ($1.matchday, $1.date ?? .distantFuture)
-            }
 
             let teamLookup = Dictionary(uniqueKeysWithValues: teams.map { ($0.id, $0) })
 
@@ -39,9 +49,35 @@ class MatchesViewModel: ObservableObject {
                     away: teamLookup[match.awayTeamId]
                 )
             }
+
+            groupedMatches = groupMatches(matches: matchesData)
         } catch {
             Logger().error("Failed loading all matches!")
         }
+    }
+
+    /// Group match data by matchday, then by date (matches without date sort last)
+    private func groupMatches(matches: [MatchData]) -> [MatchdayGroup] {
+        // Level 1: Bucketing by matchday
+        let byMatchday = Dictionary(grouping: matches) { $0.match.matchday }
+
+        return byMatchday.map { matchday, matches in
+            // Level 2: Bucketing by date only
+            let byDate = Dictionary(grouping: matches) { $0.match.date?.withoutTime }
+
+            let dateGroups = byDate.map { date, matches in
+                // Level 3: Sorting by date & time
+                let sortedMatches = matches.sorted {
+                    ($0.match.date ?? .distantFuture) < ($1.match.date ?? .distantFuture)
+                }
+
+                return DateGroup(date: date, matches: sortedMatches)
+            }
+            .sorted { ($0.date ?? .distantFuture) < ($1.date ?? .distantFuture) }
+
+            return MatchdayGroup(matchday: matchday, dates: dateGroups)
+        }
+        .sorted { $0.matchday < $1.matchday }
     }
 
     func statusText(_ status: MatchStatus, timeElapsed: (Int?, Int?)) -> String {
