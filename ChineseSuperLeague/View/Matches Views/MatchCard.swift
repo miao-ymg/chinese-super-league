@@ -18,14 +18,13 @@ let cardCornerRadius: CGFloat = 12
 // ----- VIEWS -----
 
 struct LogoBox: View {
-    let teamID: Int
-    let color: Color
+    let team: Team?
 
     var body: some View {
         let logoSize: CGFloat = 26
 
         ZStack {
-            if let logo = MemoryCache.getMiniTeamLogo(id: teamID) {
+            if let team, let logo = MemoryCache.getMiniTeamLogo(id: team.id) {
                 Image(uiImage: logo)
                     .resizable()
                     .interpolation(.high)
@@ -33,7 +32,7 @@ struct LogoBox: View {
             }
         }
         .frame(width: boxSize, height: boxSize)
-        .background(color)
+        .background(team.map { Color(hex: $0.color) } ?? Color.dark8)
         .cornerRadius(boxCornerRadius)
     }
 }
@@ -58,17 +57,17 @@ struct GoalBox: View {
 
 
 struct MatchCard: View {
-    let homeTeam: Team
-    let awayTeam: Team
-    let date: Date
-    var goals: (Int, Int)
-    var status: MatchStatus
-    var timeElapsed: String
+    @ObservedObject var vm: MatchesViewModel
+    let match: Match
+    let home: Team?
+    let away: Team?
 
     var body: some View {
         let spacing: CGFloat = 8
         let fontSize: CGFloat = 12
         let liveCircleSize: CGFloat = 8
+
+        let status = MatchStatus(rawValue: match.status) ?? .unknown
 
         VStack(spacing: spacing) {
             // Match status
@@ -79,7 +78,7 @@ struct MatchCard: View {
                     Circle()
                         .fill(status.isInPlay ? Color.liveMatch : Color.clear)
                         .frame(width: liveCircleSize, height: liveCircleSize)
-                    Text(status == .live ? timeElapsed : status.rawValue)
+                    Text(vm.statusText(status, timeElapsed: (match.timeRegular, match.timeAdded)))
                         .foregroundColor(status.isDisrupted ? Color.warning : Color.white)
                     Color.clear     // Placeholder to keep the match status center-aligned
                         .frame(width: liveCircleSize)
@@ -88,28 +87,28 @@ struct MatchCard: View {
 
             // Live score
             HStack {
-                Text(homeTeam.nameShort)
+                Text(home?.nameShort ?? match.homeTeamName)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 HStack(spacing: boxSpacing) {
-                    LogoBox(teamID: homeTeam.id, color: Color(hex: homeTeam.color))
+                    LogoBox(team: home)
 
                     // Scoreboard or Kick-off time
                     if status.isPreMatch {
-                        Text(status == .postponed ? "TBD" : date.time)
+                        Text(status == .postponed ? "TBD" : match.date?.time ?? "TBD")
                             .frame(width: 2 * boxSize * boxRatio + boxSpacing)
                             .font(.poppinsFont(14, weight: .semibold))
                             .offset(x: 0.5) // (For whatever reason, the text isn't perfectly center-aligned)
                     } else {
                         HStack(spacing: boxSpacing) {
-                            GoalBox(goals: goals.0, status: status)
-                            GoalBox(goals: goals.1, status: status)
+                            GoalBox(goals: match.scoreHome!, status: status)
+                            GoalBox(goals: match.scoreAway!, status: status)
                         }
                         .clipShape(RoundedRectangle(cornerRadius: boxCornerRadius))
                     }
 
-                    LogoBox(teamID: awayTeam.id, color: Color(hex: awayTeam.color))
+                    LogoBox(team: away)
                 }
-                Text(awayTeam.nameShort)
+                Text(away?.nameShort ?? match.awayTeamName)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.horizontal, 10)
