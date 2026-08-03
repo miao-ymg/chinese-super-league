@@ -57,9 +57,11 @@ struct MatchesView: View {
             VStack(spacing: spacing) {
                 ForEach(vm.groupedMatches) { mdGroup in
                     MatchdayLabel(matchday: mdGroup.matchday)
+                        .id(mdGroup.id)
 
                     ForEach(mdGroup.dates) { dateGroup in
                         MatchDateLabel(date: dateGroup.date)
+                            .id(dateGroup.id)
 
                         ForEach(dateGroup.matches, id: \.match.id) { entry in
                             MatchCard(vm: vm, match: entry.match, home: entry.home, away: entry.away)
@@ -72,8 +74,11 @@ struct MatchesView: View {
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
         .background(Color.dark1)
 
+        .scrollPosition(id: $vm.scrollTarget, anchor: .top)
+        .defaultScrollAnchor(.bottom)   // Fallback position (when season has concluded)
         .task {
             vm.loadAllMatches()
+            vm.initScrollTarget()
         }
     }
 }

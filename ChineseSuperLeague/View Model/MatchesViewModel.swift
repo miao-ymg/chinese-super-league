@@ -32,6 +32,7 @@ struct MatchdayGroup: Identifiable {
 
 @MainActor
 class MatchesViewModel: ObservableObject {
+    @Published var scrollTarget: AnyHashable?
     @Published var groupedMatches: [MatchdayGroup] = []
     private var matchesData: [MatchData] = []
 
@@ -88,5 +89,50 @@ class MatchesViewModel: ObservableObject {
         } else {
             return status.rawValue
         }
+    }
+
+    /// Selects the UI component shown at the top of the matches scroll view on first appearance
+    func initScrollTarget() {
+        let matches = matchesData.map { $0.match }
+
+        guard let featuredMatch = findFeaturedMatch(in: matches) else { return }
+
+        // Check if featured match is among the first of its matchday
+        let featuredDate = featuredMatch.date?.withoutTime
+        let matchdayStartDate = matches
+            .filter { $0.matchday == featuredMatch.matchday }
+            .compactMap { $0.date?.withoutTime }
+            .min()
+
+        scrollTarget = (featuredDate == matchdayStartDate) ? featuredMatch.matchday : featuredDate
+    }
+
+    /// Returns a reference match to determine the initial scroll target
+    private func findFeaturedMatch(in matches: [Match]) -> Match? {
+        let matches = matches.filter { $0.date != nil }
+
+        // a) Earliest match in play
+        let earliestInPlay = matches
+            .filter { MatchStatus($0.status).isInPlay }
+            .min { $0.date! < $1.date! }
+
+        if let earliestInPlay {
+            return earliestInPlay
+        }
+
+        // b) Matches only yesterday in local time window
+        let cal = Calendar.current
+
+        if let yesterdaysMatch = (matches.first { cal.isDateInYesterday($0.date!) }),
+            !(matches.contains { cal.isDateInToday($0.date!) || cal.isDateInTomorrow($0.date!) }) {
+
+            return yesterdaysMatch
+        }
+
+        // c) First match from today onward
+        let today = Date().withoutTime
+        return matches
+            .filter { $0.date! >= today }
+            .min { $0.date! < $1.date! }
     }
 }

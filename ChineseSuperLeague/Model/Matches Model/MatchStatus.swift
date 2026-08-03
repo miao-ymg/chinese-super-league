@@ -14,8 +14,12 @@ enum MatchStatus: String {
     case postponed = "PST"
     case unknown = "UNK"
 
+    init(_ rawValue: String) {
+        self = MatchStatus(rawValue: rawValue) ?? .unknown
+    }
+
     var isInPlay: Bool {
-        return self == .live || self == .halfTime
+        return self == .live || self == .halfTime || self == .interrupted
     }
 
     var isPreMatch: Bool {
