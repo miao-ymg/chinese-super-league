@@ -13,7 +13,7 @@ class Match: PersistableModel {
     @Attribute(.unique) var id: Int
 
     var matchday: Int
-    var date: Date?
+    var date: Date
     var status: String
     var timeRegular: Int?
     var timeAdded: Int?
@@ -29,7 +29,7 @@ class Match: PersistableModel {
     required init(from dto: MatchDTO) {
         self.id = dto.matchId
         self.matchday = dto.matchday
-        self.date = Date(from: dto.date)
+        self.date = dto.date
         self.status = dto.status
         self.timeRegular = dto.timeElapsed.regular
         self.timeAdded = dto.timeElapsed.added

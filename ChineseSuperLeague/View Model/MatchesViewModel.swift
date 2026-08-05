@@ -16,10 +16,10 @@ struct MatchData {
 }
 
 struct DateGroup: Identifiable {
-    let date: Date?
+    let date: Date
     let matches: [MatchData]
 
-    var id: Date? { date }
+    var id: Date { date }
 }
 
 struct MatchdayGroup: Identifiable {
@@ -64,17 +64,15 @@ class MatchesViewModel: ObservableObject {
 
         return byMatchday.map { matchday, matches in
             // Level 2: Bucketing by date only
-            let byDate = Dictionary(grouping: matches) { $0.match.date?.withoutTime }
+            let byDate = Dictionary(grouping: matches) { $0.match.date.withoutTime }
 
             let dateGroups = byDate.map { date, matches in
                 // Level 3: Sorting by date & time
-                let sortedMatches = matches.sorted {
-                    ($0.match.date ?? .distantFuture) < ($1.match.date ?? .distantFuture)
-                }
+                let sortedMatches = matches.sorted { $0.match.date < $1.match.date }
 
                 return DateGroup(date: date, matches: sortedMatches)
             }
-            .sorted { ($0.date ?? .distantFuture) < ($1.date ?? .distantFuture) }
+            .sorted { $0.date < $1.date }
 
             return MatchdayGroup(matchday: matchday, dates: dateGroups)
         }
@@ -98,10 +96,10 @@ class MatchesViewModel: ObservableObject {
         guard let featuredMatch = findFeaturedMatch(in: matches) else { return }
 
         // Check if featured match is among the first of its matchday
-        let featuredDate = featuredMatch.date?.withoutTime
+        let featuredDate = featuredMatch.date.withoutTime
         let matchdayStartDate = matches
             .filter { $0.matchday == featuredMatch.matchday }
-            .compactMap { $0.date?.withoutTime }
+            .compactMap { $0.date.withoutTime }
             .min()
 
         scrollTarget = (featuredDate == matchdayStartDate) ? featuredMatch.matchday : featuredDate
@@ -109,12 +107,10 @@ class MatchesViewModel: ObservableObject {
 
     /// Returns a reference match to determine the initial scroll target
     private func findFeaturedMatch(in matches: [Match]) -> Match? {
-        let matches = matches.filter { $0.date != nil }
-
         // a) Earliest match in play
         let earliestInPlay = matches
             .filter { MatchStatus($0.status).isInPlay }
-            .min { $0.date! < $1.date! }
+            .min { $0.date < $1.date }
 
         if let earliestInPlay {
             return earliestInPlay
@@ -123,8 +119,8 @@ class MatchesViewModel: ObservableObject {
         // b) Matches only yesterday in local time window
         let cal = Calendar.current
 
-        if let yesterdaysMatch = (matches.first { cal.isDateInYesterday($0.date!) }),
-            !(matches.contains { cal.isDateInToday($0.date!) || cal.isDateInTomorrow($0.date!) }) {
+        if let yesterdaysMatch = (matches.first { cal.isDateInYesterday($0.date) }),
+            !(matches.contains { cal.isDateInToday($0.date) || cal.isDateInTomorrow($0.date) }) {
 
             return yesterdaysMatch
         }
@@ -132,7 +128,7 @@ class MatchesViewModel: ObservableObject {
         // c) First match from today onward
         let today = Date().withoutTime
         return matches
-            .filter { $0.date! >= today }
-            .min { $0.date! < $1.date! }
+            .filter { $0.date >= today }
+            .min { $0.date < $1.date }
     }
 }

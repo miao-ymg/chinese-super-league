@@ -67,7 +67,7 @@ struct MatchCard: View {
         let fontSize: CGFloat = 12
         let liveCircleSize: CGFloat = 8
 
-        let status = MatchStatus(rawValue: match.status) ?? .unknown
+        let status = MatchStatus(match.status)
 
         VStack(spacing: spacing) {
             // Match status
@@ -94,7 +94,7 @@ struct MatchCard: View {
 
                     // Scoreboard or Kick-off time
                     if status.isPreMatch {
-                        Text(status == .postponed ? "TBD" : match.date?.time ?? "TBD")
+                        Text(status == .postponed ? "TBD" : match.date.time)
                             .frame(width: 2 * boxSize * boxRatio + boxSpacing)
                             .font(.poppinsFont(14, weight: .semibold))
                             .offset(x: 0.5) // (For whatever reason, the text isn't perfectly center-aligned)

@@ -28,18 +28,14 @@ struct MatchdayLabel: View {
 }
 
 struct MatchDateLabel: View {
-    let date: Date?
+    let date: Date
 
     var body: some View {
         HStack {
-            if let date {
-                Text(date.day)
-                    .fontWeight(.semibold)
-                + Text(" • \(date.date)")
-                    .foregroundColor(Color.light10)
-            } else {
-                Text("Date TBD")
-            }
+            Text(date.day)
+                .fontWeight(.semibold)
+            + Text(" • \(date.date)")
+                .foregroundColor(Color.light10)
 
             Spacer()
         }
