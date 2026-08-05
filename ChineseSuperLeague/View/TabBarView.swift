@@ -17,23 +17,22 @@ struct TabItemView: View {
         let isSelected = (thisTab == activeTab)
         let tabLabel = thisTab.rawValue
 
-        Button {
-            activeTab = thisTab
-        } label: {
-            VStack(spacing: 3) {
-                // Tab icon
-                Image("icon-\(tabLabel)\(isSelected ? "-filled" : "")")
-                    .renderingMode(.template)
-                    .resizable()
-                    .frame(width: iconSize, height: iconSize)
-                // Tab label
-                Text(tabLabel.capitalized)
-                    .font(.poppinsFont(8, weight: .semibold))
-            }
+        VStack(spacing: 3) {
+            // Tab icon
+            Image("icon-\(tabLabel)\(isSelected ? "-filled" : "")")
+                .renderingMode(.template)
+                .resizable()
+                .frame(width: iconSize, height: iconSize)
+            // Tab label
+            Text(tabLabel.capitalized)
+                .font(.poppinsFont(8, weight: .semibold))
         }
         .frame(maxWidth: .infinity)
-        .foregroundColor(isSelected ? Color.accent : Color.secondary)
+        .foregroundColor(isSelected ? .accent : .dark10)
         .padding(.top, 12)
+        .onTapGesture {
+            activeTab = thisTab
+        }
     }
 }
 
@@ -49,7 +48,7 @@ struct TabBarView: View {
         }
         .frame(height: 49)  // Standard iPhone UITabBar height
         .padding(.horizontal, 8)
-        .background(Color.dark2)
+        .background(.dark2)
         .overlay(alignment: .top) {
             Divider()
         }
