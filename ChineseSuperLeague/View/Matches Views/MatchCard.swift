@@ -42,8 +42,6 @@ struct GoalBox: View {
     var status: MatchStatus
 
     var body: some View {
-        let fontSize: CGFloat = 16
-
         let foreground = status.isInPlay ? Color.dark2 : Color.white
         let background = status.isInPlay ? Color.white : Color.dark4
 
@@ -51,7 +49,7 @@ struct GoalBox: View {
             .frame(width: boxSize * boxRatio, height: boxSize)
             .foregroundColor(foreground)
             .background(background)
-            .font(.montserratFont(fontSize, weight: .semibold))
+            .font(.montserratFont(16, weight: .semibold))
     }
 }
 
@@ -64,7 +62,6 @@ struct MatchCard: View {
 
     var body: some View {
         let spacing: CGFloat = 8
-        let fontSize: CGFloat = 12
         let liveCircleSize: CGFloat = 8
 
         let status = MatchStatus(match.status)
@@ -122,7 +119,6 @@ struct MatchCard: View {
         .padding(.vertical, spacing)
         .background(Color.dark2)
         .cornerRadius(cardCornerRadius)
-        .font(.poppinsFont(fontSize, weight: .regular))
     }
 }
 

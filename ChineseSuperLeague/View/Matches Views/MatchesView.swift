@@ -7,10 +7,40 @@
 
 import SwiftUI
 
-let spacing: CGFloat = 16
+private let spacing: CGFloat = 16
+private let xPaddingPicker: CGFloat = 16
+private let yPaddingPicker: CGFloat = 24
+private let matchesFontSize: CGFloat = 12
 
 
 // ----- VIEWS -----
+
+struct MatchdayPicker: View {
+    @State private var isShowingMatchdaySheet = false
+
+    var body: some View {
+        Button {
+            isShowingMatchdaySheet = true
+        } label: {
+            HStack {
+                Text("Matchday X")
+                Spacer()
+                Image(systemName: "chevron.down")
+            }
+            .padding(16)
+            .font(.poppinsFont(matchesFontSize, weight: .regular))
+        }
+        .overlay(
+            RoundedRectangle(cornerRadius: 2)
+                .strokeBorder(.dark3, lineWidth: 2)
+        )
+
+        .sheet(isPresented: $isShowingMatchdaySheet) {
+            MatchdaySheet(isPresented: $isShowingMatchdaySheet)
+                .presentationDetents([.medium])
+        }
+    }
+}
 
 struct MatchdayLabel: View {
     let matchday: Int
@@ -19,8 +49,8 @@ struct MatchdayLabel: View {
         let fontSize: CGFloat = 24
 
         Text("Matchday \(matchday)")
-            .padding(40)
-            .padding(.bottom, -spacing)
+            .padding(.top, spacing)
+            .padding(.bottom, yPaddingPicker)
             .font(.ntfGrandFont(fontSize, weight: .bold))
             .textCase(.uppercase)
             .tracking(fontSize * 0.02)
@@ -40,7 +70,6 @@ struct MatchDateLabel: View {
             Spacer()
         }
         .padding(.horizontal, 16)
-        .font(.poppinsFont(12, weight: .regular))
     }
 }
 
@@ -49,33 +78,42 @@ struct MatchesView: View {
     @StateObject private var vm = MatchesViewModel()
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: spacing) {
-                ForEach(vm.groupedMatches) { mdGroup in
-                    MatchdayLabel(matchday: mdGroup.matchday)
-                        .id(mdGroup.id)
+        VStack(spacing: 0) {
+            MatchdayPicker()
+                .padding(.horizontal, xPaddingPicker)
+                .padding(.vertical, yPaddingPicker)
 
-                    ForEach(mdGroup.dates) { dateGroup in
-                        MatchDateLabel(date: dateGroup.date)
-                            .id(dateGroup.id)
+            ScrollView {
+                VStack(spacing: spacing) {
+                    ForEach(vm.groupedMatches) { mdGroup in
+                        MatchdayLabel(matchday: mdGroup.matchday)
+                            .id(mdGroup.id)
 
-                        ForEach(dateGroup.matches, id: \.match.id) { entry in
-                            MatchCard(vm: vm, match: entry.match, home: entry.home, away: entry.away)
+                        ForEach(mdGroup.dates) { dateGroup in
+                            MatchDateLabel(date: dateGroup.date)
+                                .id(dateGroup.id)
+
+                            ForEach(dateGroup.matches, id: \.match.id) { entry in
+                                MatchCard(vm: vm, match: entry.match, home: entry.home, away: entry.away)
+                            }
                         }
+
+                        Spacer()
+                            .frame(height: 0)
                     }
                 }
             }
-            .padding(8)
-        }
-        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-        .background(Color.dark1)
+            .padding(.horizontal, 8)
+            .font(.poppinsFont(matchesFontSize, weight: .regular))
 
-        .scrollPosition(id: $vm.scrollTarget, anchor: .top)
-        .defaultScrollAnchor(.bottom)   // Fallback position (when season has concluded)
-        .task {
-            vm.loadAllMatches()
-            vm.initScrollTarget()
+            .scrollPosition(id: $vm.scrollTarget, anchor: .top)
+            .defaultScrollAnchor(.bottom)   // Fallback position (when season has concluded)
+            .task {
+                vm.loadAllMatches()
+                vm.initScrollTarget()
+            }
         }
+        .background(Color.dark1)
     }
 }
 

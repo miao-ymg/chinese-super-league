@@ -14,7 +14,8 @@ struct ChineseSuperLeagueApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                // App-wide default font
+                // App-wide default styles
+                .foregroundStyle(.white)
                 .font(.poppinsFont(14, weight: .regular))
                 .task {
                     await vm.syncAndStore()
