@@ -17,18 +17,3 @@ struct MatchDTO: Decodable {
     let score: HomeAwayValuesDTO
     let redCards: HomeAwayValuesDTO
 }
-
-struct TimeElapsedDTO: Decodable {
-    let regular: Int?
-    let added: Int?
-}
-
-struct MatchTeamsDTO: Decodable {
-    let home: NamedEntityDTO
-    let away: NamedEntityDTO
-}
-
-struct HomeAwayValuesDTO: Decodable {
-    let home: Int?
-    let away: Int?
-}

@@ -66,59 +66,72 @@ struct MatchCard: View {
 
         let status = MatchStatus(match.status)
 
-        VStack(spacing: spacing) {
-            // Match status
-            HStack(spacing: 6) {
-                if status == .notStarted {
-                    Text(" ")
-                } else {
-                    Circle()
-                        .fill(status.isInPlay ? Color.liveMatch : Color.clear)
-                        .frame(width: liveCircleSize, height: liveCircleSize)
-                    Text(vm.statusText(status, timeElapsed: (match.timeRegular, match.timeAdded)))
-                        .foregroundColor(status.isDisrupted ? Color.warning : Color.white)
-                    Color.clear     // Placeholder to keep the match status center-aligned
-                        .frame(width: liveCircleSize)
+        Button {
+            // TODO: Navigate to MatchView for the selected match
+            Task {
+                do {
+                    let matchDetails: MatchDetailsDTO = try await NetworkClient.fetch(path: "/matches/\(match.id)")
+                    dump(matchDetails)
+                } catch {
+                    print(error)
                 }
             }
-
-            // Live score
-            HStack {
-                Text(home?.nameShort ?? match.homeTeamName)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                HStack(spacing: boxSpacing) {
-                    LogoBox(team: home)
-
-                    // Scoreboard or Kick-off time
-                    if status.isPreMatch {
-                        Text(status == .postponed ? "TBD" : match.date.time)
-                            .frame(width: 2 * boxSize * boxRatio + boxSpacing)
-                            .font(.poppinsFont(14, weight: .semibold))
-                            .offset(x: 0.5) // (For whatever reason, the text isn't perfectly center-aligned)
+        } label: {
+            VStack(spacing: spacing) {
+                // Match status
+                HStack(spacing: 6) {
+                    if status == .notStarted {
+                        Text(" ")
                     } else {
-                        HStack(spacing: boxSpacing) {
-                            GoalBox(goals: match.scoreHome!, status: status)
-                            GoalBox(goals: match.scoreAway!, status: status)
-                        }
-                        .clipShape(RoundedRectangle(cornerRadius: boxCornerRadius))
+                        Circle()
+                            .fill(status.isInPlay ? Color.liveMatch : Color.clear)
+                            .frame(width: liveCircleSize, height: liveCircleSize)
+                        Text(vm.statusText(status, timeElapsed: (match.timeRegular, match.timeAdded)))
+                            .foregroundColor(status.isDisrupted ? Color.warning : Color.white)
+                        Color.clear     // Placeholder to keep the match status center-aligned
+                            .frame(width: liveCircleSize)
                     }
-
-                    LogoBox(team: away)
                 }
-                Text(away?.nameShort ?? match.awayTeamName)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .padding(.horizontal, 10)
-            .lineLimit(1)
-            .truncationMode(.tail)
 
-            // Final outcome for knockout stage matches (e.g. aggregate score, penalty shootout result)
-            Text(" ")
-                .foregroundStyle(Color.light10)
+                // Live score
+                HStack {
+                    Text(home?.nameShort ?? match.homeTeamName)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                    HStack(spacing: boxSpacing) {
+                        LogoBox(team: home)
+
+                        // Scoreboard or Kick-off time
+                        if status.isPreMatch {
+                            Text(status == .postponed ? "TBD" : match.date.time)
+                                .frame(width: 2 * boxSize * boxRatio + boxSpacing)
+                                .font(.poppinsFont(14, weight: .semibold))
+                                .offset(x: 0.5) // (For whatever reason, the text isn't perfectly center-aligned)
+                        } else {
+                            HStack(spacing: boxSpacing) {
+                                GoalBox(goals: match.scoreHome!, status: status)
+                                GoalBox(goals: match.scoreAway!, status: status)
+                            }
+                            .clipShape(RoundedRectangle(cornerRadius: boxCornerRadius))
+                        }
+
+                        LogoBox(team: away)
+                    }
+                    Text(away?.nameShort ?? match.awayTeamName)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .padding(.horizontal, 10)
+                .lineLimit(1)
+                .truncationMode(.tail)
+
+                // Final outcome for knockout stage matches (e.g. aggregate score, penalty shootout result)
+                Text(" ")
+                    .foregroundStyle(Color.light10)
+            }
+            .padding(.vertical, spacing)
+            .background(Color.dark2)
+            .cornerRadius(cardCornerRadius)
         }
-        .padding(.vertical, spacing)
-        .background(Color.dark2)
-        .cornerRadius(cardCornerRadius)
+        .buttonStyle(.plain)
     }
 }
 
