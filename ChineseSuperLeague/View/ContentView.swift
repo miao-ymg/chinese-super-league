@@ -13,27 +13,29 @@ struct ContentView: View {
     let placeholderText = "Page in progress, coming soon! ^^"    // (Temporary)
 
     var body: some View {
-        VStack(spacing: 0) {
-            // Top bar to select the football competition
-            CompetitionBar()
+        NavigationStack {
+            VStack(spacing: 0) {
+                // Top bar to select the football competition
+                CompetitionBar()
 
-            // Active tab content
-            Group {
-                switch activeTab {
-                case .rankings:     Text(placeholderText)
-                case .standings:    StandingsView()
-                case .matches:      MatchesView()
-                case .teams:        Text(placeholderText)
-                case .settings:     Text(placeholderText)
+                // Active tab content
+                Group {
+                    switch activeTab {
+                    case .rankings:     Text(placeholderText)
+                    case .standings:    StandingsView()
+                    case .matches:      MatchesView()
+                    case .teams:        Text(placeholderText)
+                    case .settings:     Text(placeholderText)
+                    }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .safeAreaInset(edge: .bottom) {
+                // Custom TabView
+                TabBarView(activeTab: $activeTab)
+            }
+            .background(Color.dark2)
         }
-        .safeAreaInset(edge: .bottom) {
-            // Custom TabView
-            TabBarView(activeTab: $activeTab)
-        }
-        .background(Color.dark2)
     }
 }
 

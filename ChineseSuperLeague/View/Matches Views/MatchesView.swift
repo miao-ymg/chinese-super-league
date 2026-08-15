@@ -94,7 +94,13 @@ struct MatchesView: View {
                                 .id(dateGroup.id)
 
                             ForEach(dateGroup.matches, id: \.match.id) { entry in
-                                MatchCard(vm: vm, match: entry.match, home: entry.home, away: entry.away)
+                                NavigationLink {
+                                    // Navigate to MatchView for the selected match
+                                    MatchView(match: entry.match, home: entry.home, away: entry.away)
+                                } label: {
+                                    MatchCard(vm: vm, match: entry.match, home: entry.home, away: entry.away)
+                                }
+                                .buttonStyle(.plain)
                             }
                         }
 

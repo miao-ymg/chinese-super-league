@@ -66,81 +66,59 @@ struct MatchCard: View {
 
         let status = MatchStatus(match.status)
 
-        Button {
-            // TODO: Navigate to MatchView for the selected match
-            Task {
-                do {
-                    let matchDetails: MatchDetailsDTO = try await NetworkClient.fetch(path: "/matches/\(match.id)")
-                    dump(matchDetails)
-
-                    try DatabaseService.store(as: MatchDetails.self, dtos: [matchDetails])
-                    try DatabaseService.store(as: GoalEvent.self, dtos: matchDetails.events.filter { $0.eventType == "goal" }, foreignKey: match)
-                    try DatabaseService.store(as: CardEvent.self, dtos: matchDetails.events.filter { $0.eventType == "card" }, foreignKey: match)
-                    try DatabaseService.store(as: SubstitutionEvent.self, dtos: matchDetails.events.filter { $0.eventType == "sub" }, foreignKey: match)
-                    try DatabaseService.store(as: VideoAssistEvent.self, dtos: matchDetails.events.filter { $0.eventType == "var" }, foreignKey: match)
-                    try DatabaseService.store(as: MissEvent.self, dtos: matchDetails.events.filter { $0.eventType == "miss" }, foreignKey: match)
-
-                    try DatabaseService.deleteEvents()
-                } catch {
-                    print(error)
+        VStack(spacing: spacing) {
+            // Match status
+            HStack(spacing: 6) {
+                if status == .notStarted {
+                    Text(" ")
+                } else {
+                    Circle()
+                        .fill(status.isInPlay ? Color.liveMatch : Color.clear)
+                        .frame(width: liveCircleSize, height: liveCircleSize)
+                    Text(vm.statusText(status, timeElapsed: (match.timeRegular, match.timeAdded)))
+                        .foregroundColor(status.isDisrupted ? Color.warning : Color.white)
+                    Color.clear     // Placeholder to keep the match status center-aligned
+                        .frame(width: liveCircleSize)
                 }
             }
-        } label: {
-            VStack(spacing: spacing) {
-                // Match status
-                HStack(spacing: 6) {
-                    if status == .notStarted {
-                        Text(" ")
+
+            // Live score
+            HStack {
+                Text(home?.nameShort ?? match.homeTeamName)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                HStack(spacing: boxSpacing) {
+                    LogoBox(team: home)
+
+                    // Scoreboard or Kick-off time
+                    if status.isPreMatch {
+                        Text(status == .postponed ? "TBD" : match.date.time)
+                            .frame(width: 2 * boxSize * boxRatio + boxSpacing)
+                            .font(.poppinsFont(14, weight: .semibold))
+                            .offset(x: 0.5) // (For whatever reason, the text isn't perfectly center-aligned)
                     } else {
-                        Circle()
-                            .fill(status.isInPlay ? Color.liveMatch : Color.clear)
-                            .frame(width: liveCircleSize, height: liveCircleSize)
-                        Text(vm.statusText(status, timeElapsed: (match.timeRegular, match.timeAdded)))
-                            .foregroundColor(status.isDisrupted ? Color.warning : Color.white)
-                        Color.clear     // Placeholder to keep the match status center-aligned
-                            .frame(width: liveCircleSize)
-                    }
-                }
-
-                // Live score
-                HStack {
-                    Text(home?.nameShort ?? match.homeTeamName)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                    HStack(spacing: boxSpacing) {
-                        LogoBox(team: home)
-
-                        // Scoreboard or Kick-off time
-                        if status.isPreMatch {
-                            Text(status == .postponed ? "TBD" : match.date.time)
-                                .frame(width: 2 * boxSize * boxRatio + boxSpacing)
-                                .font(.poppinsFont(14, weight: .semibold))
-                                .offset(x: 0.5) // (For whatever reason, the text isn't perfectly center-aligned)
-                        } else {
-                            HStack(spacing: boxSpacing) {
-                                GoalBox(goals: match.scoreHome!, status: status)
-                                GoalBox(goals: match.scoreAway!, status: status)
-                            }
-                            .clipShape(RoundedRectangle(cornerRadius: boxCornerRadius))
+                        HStack(spacing: boxSpacing) {
+                            GoalBox(goals: match.scoreHome!, status: status)
+                            GoalBox(goals: match.scoreAway!, status: status)
                         }
-
-                        LogoBox(team: away)
+                        .clipShape(RoundedRectangle(cornerRadius: boxCornerRadius))
                     }
-                    Text(away?.nameShort ?? match.awayTeamName)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .padding(.horizontal, 10)
-                .lineLimit(1)
-                .truncationMode(.tail)
 
-                // Final outcome for knockout stage matches (e.g. aggregate score, penalty shootout result)
-                Text(" ")
-                    .foregroundStyle(Color.light10)
+                    LogoBox(team: away)
+                }
+                Text(away?.nameShort ?? match.awayTeamName)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .padding(.vertical, spacing)
-            .background(Color.dark2)
-            .cornerRadius(cardCornerRadius)
+            .padding(.horizontal, 10)
+            .lineLimit(1)
+            .truncationMode(.tail)
+
+            // Final outcome for knockout stage matches (e.g. aggregate score, penalty shootout result)
+            Text(" ")
+                .foregroundStyle(Color.light10)
         }
-        .buttonStyle(.plain)
+        .padding(.vertical, spacing)
+        .background(Color.dark2)
+        .cornerRadius(cardCornerRadius)
     }
 }
 
