@@ -6,20 +6,20 @@
 //
 
 struct MatchEventDTO: Decodable {
-    let id: Int
+    let seqNumber: Int
     let timeElapsed: EventTimeDTO
     let eventType: String
     let team: String
     let eventTypeData: EventTypeDataDTO
 
     private enum CodingKeys: CodingKey {
-        case id, timeElapsed, eventType, team
+        case seqNumber, timeElapsed, eventType, team
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decode(Int.self, forKey: .id)
+        seqNumber = try container.decode(Int.self, forKey: .seqNumber)
         timeElapsed = try container.decode(EventTimeDTO.self, forKey: .timeElapsed)
         eventType = try container.decode(String.self, forKey: .eventType)
         team = try container.decode(String.self, forKey: .team)

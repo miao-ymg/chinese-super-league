@@ -25,6 +25,28 @@ enum DatabaseService {
         Logger().info("Successfully stored '\(modelType)' entities!")
     }
 
+    /// SwiftData storage method for model types with foreign keys
+    static func store<M: PersistableModelWithFK>(as type: M.Type, dtos: [M.DTO], foreignKey: M.FK) throws {
+        let modelType = String(describing: M.self)
+        Logger().info("Storing '\(modelType)' entities in DB ..")
+
+        for dto in dtos {
+            let entity = M(from: dto, foreignKey: foreignKey)
+            context.insert(entity)
+        }
+        try context.save()
+        Logger().info("Successfully stored '\(modelType)' entities!")
+    }
+
+    // (Temporary)
+    static func deleteEvents() throws {
+         try context.delete(model: GoalEvent.self)
+         try context.delete(model: CardEvent.self)
+         try context.delete(model: SubstitutionEvent.self)
+         try context.delete(model: VideoAssistEvent.self)
+         try context.delete(model: MissEvent.self)
+    }
+
     /// Checks whether the store contains any entities of the given model type
     static func hasNoEntries<M: PersistentModel>(for type: M.Type) throws -> Bool {
         var descriptor = FetchDescriptor<M>()

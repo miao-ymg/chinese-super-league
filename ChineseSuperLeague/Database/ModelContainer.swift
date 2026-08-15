@@ -12,9 +12,16 @@ let modelContainer: ModelContainer = {
 
     // --- All @Model types given here ---
     let schema = Schema([
+        Match.self,
+        MatchDetails.self,
+        MatchEvent.self,
+        CardEvent.self,
+        GoalEvent.self,
+        MissEvent.self,
+        SubstitutionEvent.self,
+        VideoAssistEvent.self,
         Standing.self,
-        Team.self,
-        Match.self
+        Team.self
     ])
 
     do {
