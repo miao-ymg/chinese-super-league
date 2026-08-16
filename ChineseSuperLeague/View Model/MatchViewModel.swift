@@ -13,10 +13,13 @@ class MatchViewModel: ObservableObject {
     var home: Team?
     var away: Team?
 
+    var status: MatchStatus
+
     init(match: Match, home: Team?, away: Team?) {
         self.match = match
         self.home = home
         self.away = away
+        self.status = MatchStatus(match.status)
     }
 
     func loadMatch() async {
@@ -34,6 +37,26 @@ class MatchViewModel: ObservableObject {
             try DatabaseService.deleteEvents()
         } catch {
             print(error)
+        }
+    }
+
+    var primaryToolbarText: String {
+        if status == .notStarted {
+            return match.date.day
+        } else if status == .live, let regular = match.timeRegular {
+            return minuteOfPlay(regular: regular, added: match.timeAdded)
+        } else {
+            return status.fullString
+        }
+    }
+
+    var secondaryToolbarText: String {
+        if status == .notStarted &&
+            !Calendar.current.isDateInToday(match.date) &&
+            !Calendar.current.isDateInTomorrow(match.date) {
+            return " • " + match.date.date
+        } else {
+            return ""
         }
     }
 }

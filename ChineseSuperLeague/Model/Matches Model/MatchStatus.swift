@@ -18,6 +18,18 @@ enum MatchStatus: String {
         self = MatchStatus(rawValue: rawValue) ?? .unknown
     }
 
+    var fullString: String {
+        switch self {
+        case .notStarted:   "Not started"
+        case .live:         "Live"
+        case .halfTime:     "Half-time"
+        case .fullTime:     "Full-time"
+        case .interrupted:  "Interrupted"
+        case .postponed:    "Postponed"
+        case .unknown:      "UNKNOWN"
+        }
+    }
+
     var isInPlay: Bool {
         return self == .live || self == .halfTime || self == .interrupted
     }

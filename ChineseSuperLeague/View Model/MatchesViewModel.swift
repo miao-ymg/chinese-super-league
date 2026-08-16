@@ -82,8 +82,7 @@ class MatchesViewModel: ObservableObject {
     func statusText(_ status: MatchStatus, timeElapsed: (Int?, Int?)) -> String {
         // Ongoing match? -> Return elapsed time
         if status == .live, let regular = timeElapsed.0 {
-            let added = timeElapsed.1.map { "+\($0)" } ?? ""
-            return "\(regular)\(added)'"
+            return minuteOfPlay(regular: regular, added: timeElapsed.1)
         } else {
             return status.rawValue
         }
